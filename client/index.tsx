@@ -1,7 +1,15 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { App } from './components/App';
+import { Provider } from "react-redux"
+import store from './store'
+
+
+
+
 ReactDOM.render(
-  <App userName="Beveloper" lang="TypeScript" />,
-  document.getElementById('output')
+  <Provider store = {store}>
+     <App userName='Beveloper' lang='TypeScript' />
+  </Provider>,
+  document.getElementById("output")
 );
