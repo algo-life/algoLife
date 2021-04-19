@@ -9,7 +9,9 @@ app.use(express.json());
 
 app.use(express.static(path.resolve(__dirname, '../client')));
 
-app.use('/', apiRouter);
+app.use('/api', apiRouter);
+
+app.use('/build', express.static(path.join(__dirname, '../build/')));
 
 app.get('/', (req, res) => {
   res.status(200).sendFile(path.join(__dirname, '../client/index.html'));
