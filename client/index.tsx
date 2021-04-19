@@ -8,8 +8,8 @@ import store from './store'
 
 
 ReactDOM.render(
-    <Provider store = {store}>
-        <App userName='Beveloper' lang='TypeScript' />
-    </Provider>,
-    document.getElementById("output")
-    );
+  <Provider store = {store}>
+     <App userName='Beveloper' lang='TypeScript' />
+  </Provider>,
+  document.getElementById("output")
+);

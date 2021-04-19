@@ -1,16 +1,26 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
 module.exports = {
-  entry: "./client/index.tsx",
+  entry: path.join(__dirname, './client/index.tsx'),
   target: "web",
-  mode: "development",
+  mode: process.env.NODE_ENV,
   output: {
     path: path.resolve(__dirname, "build"),
     filename: "bundle.js",
   },
   resolve: {
     extensions: [".js", ".jsx", ".json", ".ts", ".tsx"],
+  devServer: {
+    publicPath: '/build/',
+    contentBase: './client',
+    hot: true,
+    proxy: [
+      {
+        '/api': 'http://localhost:3000',
+      },
+    ],
   },
   module: {
     rules: [
