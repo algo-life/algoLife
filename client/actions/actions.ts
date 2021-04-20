@@ -30,7 +30,9 @@ export const login = (username: string, password: string) => (
 //       dispatch({ type: 'UPDATE_USER', payload: userInfo });
 //     })
 //     .catch((e) => console.log('error from login action...', e));
+if (username !== 'fail')
 dispatch({ type: 'UPDATE_USER', payload: { username }})
+else dispatch({ type: 'UPDATE_USER_FAIL' })
   //console.log(username, password);
 };
 

@@ -4,15 +4,21 @@ import { updateUsername, updatePassword, signUp } from '../actions/actions';
 import { useHistory } from 'react-router-dom';
 
 function SignUp(props: any) {
-    const history= useHistory()
-    React.useEffect(() => {
-        if (props.user.username) history.push('/main');
-      }, [props.user]);
+  const history = useHistory();
+
+  React.useEffect(() => {
+    if (props.user.username) history.push('/main');
+  }, [props.user]);
+
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    props.signUp(props.username, props.password);
+  };
 
   return (
     <div>
       <h1>SignUp</h1>
-      <form onSubmit={(e) => e.preventDefault()}>
+      <form onSubmit={handleSubmit}>
         <label htmlFor="username">Username</label>
         <input
           id="usernameSignUp"
@@ -28,10 +34,7 @@ function SignUp(props: any) {
           onChange={(e) => props.updatePassword(e.target.value)}
         />
 
-        <button
-          id="signUp"
-          onClick={() => props.signUp(props.username, props.password)}
-        >
+        <button id="signUp" type="submit">
           Sign me UP
         </button>
       </form>
@@ -42,7 +45,7 @@ function SignUp(props: any) {
 const mapStateToProps = (state: any) => ({
   username: state.form.username,
   password: state.form.password,
-  user:state.user
+  user: state.user,
 });
 
 const mapDispatchToProps = (dispatch: any) => ({

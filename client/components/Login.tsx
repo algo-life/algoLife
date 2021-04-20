@@ -7,6 +7,12 @@ import { useHistory } from 'react-router-dom';
 function Login(props: any) {
   const history = useHistory();
 
+  function loginError(){
+    if (props.user.loginError) {
+     return <h3>{props.user.loginError}</h3>
+    }
+  }
+
   React.useEffect(() => {
     if (props.user.username) history.push('/main');
   }, [props.user]);
@@ -41,11 +47,11 @@ function Login(props: any) {
           Login
         </button>
       </form>
+      {loginError()}
     </div>
   );
 }
 
-//button sends form data to backend
 const mapStateToProps = (state: any) => ({
   username: state.form.username,
   password: state.form.password,
