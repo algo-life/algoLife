@@ -72,18 +72,24 @@ authController.createJWT = (req, res, next) => {
 
   jwt.sign({ username }, secret, { expiresIn: '3600s' }, (err, token) => {
     if (err) return res.status(400).json('Error creating JWT');
-    res.cookie('jwt', token, { httpOnly: true });
+    res.cookie('jwt', token, { httpOnly: true, maxAge: 60 * 60 * 1000 });
     return next();
   });
 };
 
-// authController.verifyJWT = (req, res, next) => {
-//   console.log('inside authController.verifyJWT');
-//   console.log('req.cookie: ', req.cookie);
-//   const token = req.cookie.jwt;
-//   console.log('verifyJWT token: ', token);
-//   return next();
-// };
+authController.verifyJWT = (req, res, next) => {
+  console.log('inside authController.verifyJWT');
+  const token = req.cookies.jwt;
+  // console.log('verifyJWT token: ', token);
+  if (!token) return res.redirect('/login');
+
+  jwt.verify(token, secret, (err, decoded) => {
+    if (err) return res.status(400).json(err);
+    const { username } = decoded;
+    res.locals.user = username;
+  });
+  return next();
+};
 
 authController.logout = (req, res, next) => {
   console.log('inside authController.logout');
