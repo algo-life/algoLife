@@ -1,7 +1,9 @@
-import { combineReducers } from 'redux'
+import { combineReducers } from 'redux';
+import formReducer from './formReducer';
 
+//grabs all pieces of state and the corresponding reducers(fxns)
 const reducers = combineReducers({
-    dummy: (state={})=> state
-})
+  form: formReducer,
+});
 
-export default reducers
+export default reducers;
