@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { updateUsername, updatePassword, signUp } from '../actions/actions';
 
 function SignUp(props: any) {
+  console.log(props);
   return (
     <div>
       <h1>SignUp</h1>
@@ -42,7 +43,7 @@ const mapDispatchToProps = (dispatch: any) => ({
   updateUsername: (newName: string) => dispatch(updateUsername(newName)),
   updatePassword: (newPass: string) => dispatch(updatePassword(newPass)),
   signUp: (inputUsername: string, inputPassword: string) =>
-    signUp(inputUsername, inputPassword),
+    dispatch(signUp(inputUsername, inputPassword)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignUp);

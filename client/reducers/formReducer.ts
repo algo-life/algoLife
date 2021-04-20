@@ -10,7 +10,6 @@ const initialState: FormState = {
   username: '',
   password: '',
 };
-// { type: 'UPDATE_USERNAME', payload: 'angelo' }
 
 export default function formReducer(
   state = initialState,
