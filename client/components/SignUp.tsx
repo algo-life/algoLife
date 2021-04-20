@@ -1,9 +1,14 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { updateUsername, updatePassword, signUp } from '../actions/actions';
+import { useHistory } from 'react-router-dom';
 
 function SignUp(props: any) {
-  console.log(props);
+    const history= useHistory()
+    React.useEffect(() => {
+        if (props.user.username) history.push('/main');
+      }, [props.user]);
+
   return (
     <div>
       <h1>SignUp</h1>
@@ -37,6 +42,7 @@ function SignUp(props: any) {
 const mapStateToProps = (state: any) => ({
   username: state.form.username,
   password: state.form.password,
+  user:state.user
 });
 
 const mapDispatchToProps = (dispatch: any) => ({

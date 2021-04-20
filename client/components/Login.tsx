@@ -6,14 +6,20 @@ import { useHistory } from 'react-router-dom';
 
 function Login(props: any) {
   const history = useHistory();
+
   React.useEffect(() => {
-    if (props.user.username) history.push('/main'), [props.user];
-  });
-  console.log('whatup', history);
+    if (props.user.username) history.push('/main');
+  }, [props.user]);
+
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    props.login(props.username, props.password);
+  };
+
   return (
     <div>
       <h1>Login</h1>
-      <form onSubmit={(e) => e.preventDefault()}>
+      <form onSubmit={handleSubmit}>
         <label htmlFor="username">Username</label>
         <input
           id="username"
@@ -30,7 +36,7 @@ function Login(props: any) {
         />
         <button
           id="loginButton"
-          onClick={() => props.login(props.username, props.password)}
+          type="submit"
         >
           Login
         </button>
