@@ -87,8 +87,8 @@ authController.verifyJWT = (req, res, next) => {
     if (err) return res.status(400).json(err);
     const { username } = decoded;
     res.locals.user = username;
+    return next();
   });
-  return next();
 };
 
 authController.logout = (req, res, next) => {
