@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { connect } from 'react-redux';
 import Login from './Login';
 import MainContainer from './MainContainer';
 import SignUp from './SignUp';
@@ -6,12 +7,11 @@ import Navbar from './Navbar';
 import AlgoSubmit from './AlgoSubmit';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
-export interface HelloWorldProps {
-  userName: string;
-  lang: string;
-}
+const mapState = (state: any) => ({
+  user: state.user,
+});
 
-export const App = (props: HelloWorldProps) => (
+const App = (props: any) => (
   <div>
     <Router>
       <Navbar />
@@ -26,9 +26,14 @@ export const App = (props: HelloWorldProps) => (
           <SignUp />
         </Route>
         <Route path="/main" exact>
-          <MainContainer />
+          <MainContainer
+            user={props.user}
+            algorithm={props.user.algorithms[2]}
+          />
         </Route>
       </Switch>
     </Router>
   </div>
 );
+
+export default connect(mapState)(App);

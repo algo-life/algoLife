@@ -15,7 +15,7 @@ export interface Algorithm {
   saved: boolean;
   solution: string;
   solved: boolean;
-  test_id: number;
+  test: string;
   _id: number;
 }
 

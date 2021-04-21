@@ -14,7 +14,11 @@ const algo = {
   saved: false,
   solution: 'function sum(a, b) { return a + b; }',
   solved: true,
-  test_id: 3,
+  test: `describe('sum', function () {
+    it('should return sum of arguments', function () {
+      chai.expect(sum(1, 2)).to.equal(3);
+    });
+  });`,
   _id: 3,
 };
 
@@ -22,27 +26,20 @@ function MainContainer(props: any) {
   const [frameHtml, setFrameHtml] = React.useState('');
 
   const runTest = () => {
-    if (props.curTest) {
-      const test = testHtml.replace('__TESTHERE__', props.curTest);
+    if (props.algorithm.test) {
+      const test = testHtml.replace('__TESTHERE__', props.algorithm.test);
       setFrameHtml(test.replace('__SOLUTIONHERE__', props.code));
     }
   };
 
   React.useEffect(() => {
-    fetch('/algos/test/' + algo.test_id)
-      .then((res) => res.json())
-      .then((test) => {
-        console.log(test);
-        props.updateTest(test.test_body);
-      });
-
-    if (algo.solution) props.updateCode(algo.solution);
+    if (props.algorithm.solution) props.updateCode(props.algorithm.solution);
   }, []);
 
   return (
     <div>
       <h1>MainContainer</h1>
-      <CodeEditor code={props.code} solution={algo.solution} />
+      <CodeEditor code={props.code} solution={props.algorithm.solution} />
       <button onClick={runTest}>Run test</button>
       <iframe
         id="test-frame"

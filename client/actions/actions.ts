@@ -33,7 +33,6 @@ export const login = (username: string, password: string) => (
   })
     .then((res) => res.json())
     .then((userInfo: any) => {
-      console.log(userInfo);
       dispatch({ type: 'UPDATE_USER', payload: userInfo });
     })
     .catch((e) => console.log('error from login action...', e));
@@ -49,7 +48,6 @@ export const signUp = (username: string, password: string) => (
   })
     .then((res) => res.json())
     .then((userInfo: any) => {
-      console.log('actions signup', userInfo);
       dispatch({ type: 'UPDATE_USER', payload: userInfo });
     })
     .catch((e) => console.log('error from signUp action...', e));
