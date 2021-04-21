@@ -28,7 +28,6 @@ authController.create = (req, res, next) => {
       `;
     db.query(query, [username, hash]).then((response) => {
       res.locals.user = response.rows[0];
-      console.log('res.locals:', res.locals.user);
       return next();
     });
   });
@@ -56,7 +55,6 @@ authController.login = (req, res, next) => {
 
         if (!result) return res.status(401).json('Incorrect password.');
         if (result) {
-          console.log(response.rows[0]);
           res.locals.user = {
             username: response.rows[0].username,
             _id: response.rows[0]._id,
@@ -70,6 +68,48 @@ authController.login = (req, res, next) => {
       console.log('.catch in authController.login', err);
       return next(err);
     });
+};
+
+authController.createUserObject = (req, res, next) => {
+  console.log('inside authController.createUserObject');
+  const { _id } = res.locals.user;
+  const query1 = `
+  SELECT * FROM algorithms
+  `;
+  const query2 = `
+  SELECT * FROM users_algorithms
+  WHERE user_id = ${_id}
+  `;
+  db.query(query1).then((response) => {
+    res.locals.user.algorithms = response.rows;
+  });
+
+  db.query(query2).then((response) => {
+    const userAlgos = [];
+    if (response.rows) {
+      for (let i = 0; i < response.rows.length; i++) {
+        userAlgos.push(response.rows[i].algorithm_id);
+      }
+    }
+    for (let i = 0; i < res.locals.user.algorithms.length; i++) {
+      if (userAlgos.includes(res.locals.user.algorithms[i]._id)) {
+        const index = userAlgos.findIndex(
+          (x) => res.locals.user.algorithms[i]._id
+        );
+        res.locals.user.algorithms[i].saved = response.rows[index].saved;
+        res.locals.user.algorithms[i].solved = response.rows[index].solved;
+        res.locals.user.algorithms[i].solution = response.rows[index].solution;
+        res.locals.user.algorithms[i].created_at =
+          response.rows[index].created_at;
+      } else {
+        res.locals.user.algorithms[i].saved = false;
+        res.locals.user.algorithms[i].solved = false;
+        res.locals.user.algorithms[i].solution = null;
+        res.locals.user.algorithms[i].created_at = null;
+      }
+    }
+    return next();
+  });
 };
 
 authController.createJWT = (req, res, next) => {
@@ -93,7 +133,6 @@ authController.verifyJWT = (req, res, next) => {
   jwt.verify(token, secret, (err, decoded) => {
     if (err) return res.status(400).json(err);
     const { username } = decoded;
-    // res.locals.user = username;
     return next();
   });
 };
