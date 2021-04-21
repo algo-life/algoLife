@@ -21,14 +21,14 @@ export const App = (props: HelloWorldProps) => (
     <Router>
       <Navbar />
       <Switch>
-        <Route path="/" exact />
+        {/* <Route path="/" exact /> */}
         <Route path="/login" exact>
           <Login />
         </Route>
         <Route path="/signup" exact>
           <SignUp />
         </Route>
-        <Route path="/main" exact>
+        <Route path="/" exact>
           <MainContainer />
         </Route>
       </Switch>

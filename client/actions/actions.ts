@@ -1,4 +1,10 @@
-import { UPDATE_USERNAME, UPDATE_PASSWORD, UPDATE_USER } from '../constants';
+import {
+  UPDATE_USERNAME,
+  UPDATE_PASSWORD,
+  UPDATE_USER,
+  UPDATE_CODE,
+  UPDATE_THEME,
+} from '../constants';
 // change if the user has successfully logged in and redirect to home
 //screen
 // if(state.isLoggedIn){
@@ -35,9 +41,6 @@ export const login = (username: string, password: string) => (
 export const signUp = (username: string, password: string) => (
   dispatch: any
 ) => {
-  //submit state to backend probably for Oauth
-  //redirect to profile if successfully signed in
-  // console.log(username, password, 'signup');
   fetch('/auth/signup', {
     method: 'POST',
     headers: { 'content-type': 'application/json' },
@@ -50,3 +53,13 @@ export const signUp = (username: string, password: string) => (
     })
     .catch((e) => console.log('error from signUp action...', e));
 };
+
+export const updateCode = (code: string): UPDATE_CODE => ({
+  type: 'UPDATE_CODE',
+  payload: code,
+});
+
+export const updateTheme = (theme: string): UPDATE_THEME => ({
+  type: 'UPDATE_THEME',
+  payload: theme,
+});
