@@ -18,7 +18,7 @@ router.post(
   '/login',
   authController.login,
   authController.createJWT,
-  authController.verifyJWT,
+  // authController.verifyJWT,
   (req, res) => {
     res.status(200).json(res.locals.user);
   }
