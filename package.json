@@ -6,9 +6,11 @@
   "scripts": {
     "start": "NODE_ENV=production webpack & nodemon server/server.js",
     "build": "NODE_ENV=production webpack",
-    "dev": "NODE_ENV=development nodemon server/server.js & NODE_ENV=development webpack serve --open --hot"
+    "dev": "NODE_ENV=development nodemon server/server.js & NODE_ENV=development webpack serve --open --hot",
+    "test": "jest",
+    "test-algo": "bash ./algorithms/scripts/run-test.sh"
   },
-  "author": "",
+  "author": "Weilan Cui, Rachel Farley, Ryan McDaniel, & Angelo Quail",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.1",
@@ -31,6 +33,7 @@
     "awesome-typescript-loader": "^5.2.1",
     "css-loader": "^5.2.4",
     "html-webpack-plugin": "^5.3.1",
+    "jest": "^26.6.3",
     "mini-css-extract-plugin": "^1.5.0",
     "nodemon": "^2.0.7",
     "redux-devtools-extension": "^2.13.9",
