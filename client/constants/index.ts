@@ -10,16 +10,17 @@ export interface UPDATE_PASSWORD extends Action {
   payload: string;
 }
 
-interface UserObject{
-  username: string
+interface UserObject {
+  username: string;
+  _id: number;
 }
 
-export interface UPDATE_USER_FAIL extends Action{
-    type: 'UPDATE_USER_FAIL'
+export interface UPDATE_USER_FAIL extends Action {
+  type: 'UPDATE_USER_FAIL';
 }
-export interface UPDATE_USER extends Action{
-    type:'UPDATE_USER';
-    payload: UserObject;
+export interface UPDATE_USER extends Action {
+  type: 'UPDATE_USER';
+  payload: UserObject;
 }
 export type FormAction = UPDATE_USERNAME | UPDATE_PASSWORD;
 export type UserAction = UPDATE_USER | UPDATE_USER_FAIL;
