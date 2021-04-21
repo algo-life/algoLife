@@ -1,15 +1,19 @@
 const express = require('express');
 const path = require('path');
+const cookieParser = require('cookie-parser');
 
 const app = express();
-const apiRouter = require('./routes/api');
+const authRouter = require('./routes/auth');
+const algoRouter = require('./routes/algos');
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(cookieParser());
 
 app.use(express.static(path.resolve(__dirname, '../client')));
 
-app.use('/api', apiRouter);
+app.use('/auth', authRouter);
+app.use('/algos', algoRouter);
 
 app.use('/build', express.static(path.join(__dirname, '../build/')));
 
