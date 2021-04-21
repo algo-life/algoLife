@@ -31,9 +31,9 @@ export default function AlgoSubmit() {
         placeholder="Algo difficulty"
         onChange={handleChange}
       />
-      <label htmlFor="Algo input">Input</label>
+      <label htmlFor="Algo input">Input - (1, 2)|(3, 4)|(5,6)</label>
       <input id="input" placeholder="Algo input" onChange={handleChange} />
-      <label htmlFor="Algo output">Output</label>
+      <label htmlFor="Algo output">Output - 3,7,11</label>
       <input id="output" placeholder="Algo output" onChange={handleChange} />
       <button>Submit</button>
     </form>
