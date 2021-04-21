@@ -7,9 +7,9 @@ const authController = require('../controllers/authController');
 router.post(
   '/signup',
   authController.create,
+  authController.createUserObject,
   authController.createJWT,
   (req, res) => {
-    console.log('about to send', res.locals.user);
     res.status(200).json(res.locals.user);
   }
 );
@@ -17,6 +17,7 @@ router.post(
 router.post(
   '/login',
   authController.login,
+  authController.createUserObject,
   authController.createJWT,
   // authController.verifyJWT,
   (req, res) => {
