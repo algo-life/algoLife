@@ -9,7 +9,8 @@ router.post(
   authController.create,
   authController.createJWT,
   (req, res) => {
-    res.status(200).json(res.locals.newUser);
+    console.log('about to send', res.locals.user);
+    res.status(200).json(res.locals.user);
   }
 );
 

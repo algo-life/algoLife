@@ -27,8 +27,8 @@ authController.create = (req, res, next) => {
       RETURNING _id, username;
       `;
     db.query(query, [username, hash]).then((response) => {
-      res.locals.newUser = response.rows[0];
-      console.log('res.locals:', res.locals.newUser);
+      res.locals.user = response.rows[0];
+      console.log('res.locals:', res.locals.user);
       return next();
     });
   });
@@ -39,7 +39,7 @@ authController.login = (req, res, next) => {
 
   const { username, password } = req.body;
   const query = `
-    SELECT username, password
+    SELECT _id, username, password
     FROM users
     WHERE username = $1`;
 
@@ -57,7 +57,10 @@ authController.login = (req, res, next) => {
         if (!result) return res.status(401).json('Incorrect password.');
         if (result) {
           console.log(response.rows[0]);
-          res.locals.user = { username: response.rows[0].username };
+          res.locals.user = {
+            username: response.rows[0].username,
+            _id: response.rows[0]._id,
+          };
           return next();
         }
         // return next();
