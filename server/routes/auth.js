@@ -19,7 +19,7 @@ router.post(
   authController.createJWT,
   authController.verifyJWT,
   (req, res) => {
-    res.status(200).json('Successfully logged in.');
+    res.status(200).json(res.locals.user);
   }
 );
 

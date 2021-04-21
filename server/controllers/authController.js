@@ -55,8 +55,12 @@ authController.login = (req, res, next) => {
         }
 
         if (!result) return res.status(401).json('Incorrect password.');
-        if (result) return next();
-        return next();
+        if (result) {
+          console.log(response.rows[0]);
+          res.locals.user = { username: response.rows[0].username };
+          return next();
+        }
+        // return next();
       });
     })
     .catch((err) => {
@@ -86,7 +90,7 @@ authController.verifyJWT = (req, res, next) => {
   jwt.verify(token, secret, (err, decoded) => {
     if (err) return res.status(400).json(err);
     const { username } = decoded;
-    res.locals.user = username;
+    // res.locals.user = username;
     return next();
   });
 };

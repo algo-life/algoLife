@@ -1,9 +1,9 @@
 import { UPDATE_USERNAME, UPDATE_PASSWORD, UPDATE_USER } from '../constants';
-    // change if the user has successfully logged in and redirect to home 
-    //screen
-    // if(state.isLoggedIn){
-    //   history.push('/home');
-    // }
+// change if the user has successfully logged in and redirect to home
+//screen
+// if(state.isLoggedIn){
+//   history.push('/home');
+// }
 // add this in order to listen to state/store changes in the UI [state.isLoggedIn])
 
 export const updateUsername = (newName: string): UPDATE_USERNAME => ({
@@ -19,20 +19,20 @@ export const updatePassword = (newPass: string): UPDATE_PASSWORD => ({
 export const login = (username: string, password: string) => (
   dispatch: any
 ) => {
-//   fetch('/login', {
-//     method: 'POST',
-//     headers: { 'content-type': 'application/json' },
-//     body: JSON.stringify({ username, password }),
-//   })
-//     .then((res) => res.json())
-//     .then((userInfo: any) => {
-//       console.log('actions login', userInfo);
-//       dispatch({ type: 'UPDATE_USER', payload: userInfo });
-//     })
-//     .catch((e) => console.log('error from login action...', e));
-if (username !== 'fail')
-dispatch({ type: 'UPDATE_USER', payload: { username }})
-else dispatch({ type: 'UPDATE_USER_FAIL' })
+  fetch('/auth/login', {
+    method: 'POST',
+    headers: { 'content-type': 'application/json' },
+    body: JSON.stringify({ username, password }),
+  })
+    .then((res) => res.json())
+    .then((userInfo: any) => {
+      console.log(userInfo);
+      dispatch({ type: 'UPDATE_USER', payload: userInfo });
+    })
+    .catch((e) => console.log('error from login action...', e));
+  // if (username !== 'fail')
+  // dispatch({ type: 'UPDATE_USER', payload: { username }})
+  // else dispatch({ type: 'UPDATE_USER_FAIL' })
   //console.log(username, password);
 };
 
@@ -56,5 +56,5 @@ export const signUp = (username: string, password: string) => (
   //   })
   //   .catch((e) => console.log('error from signUp action...', e));
 
-   dispatch({ type: 'UPDATE_USER', payload: { username } });
+  dispatch({ type: 'UPDATE_USER', payload: { username } });
 };
