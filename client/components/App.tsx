@@ -3,6 +3,7 @@ import Login from './Login';
 import MainContainer from './MainContainer';
 import SignUp from './SignUp';
 import Navbar from './Navbar';
+import Profile from './Profile';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 export interface HelloWorldProps {
@@ -30,6 +31,9 @@ export const App = (props: HelloWorldProps) => (
         </Route>
         <Route path="/main" exact>
           <MainContainer />
+        </Route>
+        <Route path="/profile" exact>
+          <Profile />
         </Route>
       </Switch>
     </Router>

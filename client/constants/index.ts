@@ -14,10 +14,15 @@ export interface UPDATE_USER_FAIL extends Action {
   type: 'UPDATE_USER_FAIL';
 }
 
+export interface UPDATE_ALGOS{
+  type: 'UPDATE_ALGOS'
+  payload:UserObject["algorithms"]
+}
+
 export interface algorithms {
   name: String;
   prompt: String;
-  level?: String;
+  difficulty?: String;
   solved?: Boolean;
   saved?: Boolean;
   solution?: String;
@@ -26,12 +31,15 @@ export interface algorithms {
 export interface UserObject {
   username: string;
   _id: number;
-  algos?: Array<algorithms>
+  algorithms?: Array<algorithms>
+  loginError?: string
 }
 
 export interface UPDATE_USER extends Action {
   type: 'UPDATE_USER';
   payload: UserObject;
 }
+
+
 export type FormAction = UPDATE_USERNAME | UPDATE_PASSWORD;
-export type UserAction = UPDATE_USER | UPDATE_USER_FAIL;
+export type UserAction = UPDATE_USER | UPDATE_USER_FAIL | UPDATE_ALGOS

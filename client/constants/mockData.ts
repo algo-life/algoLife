@@ -10,7 +10,7 @@ import { UserObject } from './index'
         {
         name: "algo1",
         prompt: "testpromp",
-        level:"peasy",
+        difficulty:"peasy",
         solved:false,
         saved: false,
         solution:"stuff"

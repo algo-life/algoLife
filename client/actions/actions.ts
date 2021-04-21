@@ -1,10 +1,20 @@
-import { UPDATE_USERNAME, UPDATE_PASSWORD, UPDATE_USER } from '../constants';
+import { UPDATE_USERNAME, UPDATE_PASSWORD, UPDATE_USER, algorithms, UPDATE_ALGOS} from '../constants';
 // change if the user has successfully logged in and redirect to home
 //screen
-// if(state.isLoggedIn){
-//   history.push('/home');
+// import { useHistory } from 'react-router-dom';
+// const history = useHistory()
+
+// export const isLoggedIn= (username:string|null)=>{
+//   if(username){
+//     history.push('/profile');
+//   }
 // }
+
 // add this in order to listen to state/store changes in the UI [state.isLoggedIn])
+export const updateAlgos= (updateAlgos: Array<algorithms>)=>({
+  type:'UPDATE_ALGOS',
+  payload: updateAlgos
+})
 
 export const updateUsername = (newName: string): UPDATE_USERNAME => ({
   type: 'UPDATE_USERNAME',
@@ -15,6 +25,7 @@ export const updatePassword = (newPass: string): UPDATE_PASSWORD => ({
   type: 'UPDATE_PASSWORD',
   payload: newPass,
 });
+
 
 export const login = (username: string, password: string) => (
   dispatch: any
@@ -37,7 +48,6 @@ export const signUp = (username: string, password: string) => (
 ) => {
   //submit state to backend probably for Oauth
   //redirect to profile if successfully signed in
-  // console.log(username, password, 'signup');
   fetch('/auth/signup', {
     method: 'POST',
     headers: { 'content-type': 'application/json' },
