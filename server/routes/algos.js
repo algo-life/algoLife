@@ -4,8 +4,8 @@ const router = express.Router();
 
 const algoController = require('../controllers/algoController');
 
-router.get('/example', algoController.getExampleAlgos, (req, res) => {
-  res.status(200).json(res.locals);
+router.get('/test/:id', algoController.getTest, (req, res) => {
+  res.status(200).json('did the thing');
 });
 
 module.exports = router;
