@@ -1,4 +1,3 @@
-import * as types from '../constants';
 import { FormAction } from '../constants';
 
 interface FormState {
