@@ -61,7 +61,6 @@ authController.login = (req, res, next) => {
           };
           return next();
         }
-        // return next();
       });
     })
     .catch((err) => {
