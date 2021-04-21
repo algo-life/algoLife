@@ -5,7 +5,7 @@ import MainContainer from './MainContainer';
 import SignUp from './SignUp';
 import Navbar from './Navbar';
 import AlgoSubmit from './AlgoSubmit';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 const mapState = (state: any) => ({
   user: state.user,
@@ -17,8 +17,9 @@ const App = (props: any) => (
       <Navbar />
       <Switch>
         <Route path="/" exact>
-          <AlgoSubmit />
+          <Login />
         </Route>
+
         <Route path="/login" exact>
           <Login />
         </Route>
@@ -30,6 +31,9 @@ const App = (props: any) => (
             user={props.user}
             algorithm={props.user.algorithms[2]}
           />
+        </Route>
+        <Route path="/algoform" exact>
+          <AlgoSubmit />
         </Route>
       </Switch>
     </Router>
