@@ -8,7 +8,7 @@ import 'ace-builds/src-noconflict/theme-ambiance';
 import 'ace-builds/src-noconflict/theme-cobalt';
 import 'ace-builds/src-noconflict/theme-dawn';
 import 'ace-builds/src-noconflict/theme-twilight';
-import { updateCode, updateTheme } from '../actions/actions';
+import { updateCode } from '../actions/actions';
 
 const mapState = (state: any) => ({
   code: state.code.code,
@@ -17,7 +17,6 @@ const mapState = (state: any) => ({
 
 const mapDispatch = (dispatch: any) => ({
   updateCode: (val: string) => dispatch(updateCode(val)),
-  updateTheme: (val: string) => dispatch(updateTheme(val)),
 });
 
 function CodeEditor(props: any) {
@@ -34,6 +33,7 @@ function CodeEditor(props: any) {
           enableLiveAutocompletion: true,
           enableSnippets: true,
         }}
+        setOptions={{ useWorker: false }}
         width="700px"
         fontSize={14}
         tabSize={2}

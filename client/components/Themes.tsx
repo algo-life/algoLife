@@ -9,12 +9,14 @@ const mapDispatch = (dispatch: any) => ({
 
 function Themes(props: any) {
   const themes = ['monokai', 'ambiance', 'cobalt', 'dawn', 'twilight'];
+
   const renderThemes = () =>
     themes.map((theme) => (
       <p id="code-theme" key={theme} onClick={() => props.updateTheme(theme)}>
         {theme}
       </p>
     ));
+
   return <div id="themes">{renderThemes()}</div>;
 }
 
