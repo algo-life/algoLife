@@ -4,9 +4,15 @@ const algoController = {};
 
 algoController.getTest = (req, res, next) => {
   console.log('inside algoController.getTest');
-  const { id } = req.params.id;
+  const { id } = req.params;
+  const query = `
+    SELECT * FROM tests
+    WHERE _id = ${id}`;
 
-  next();
+  db.query(query).then((response) => {
+    res.locals.test = response.rows[0];
+    return next();
+  });
 };
 
 module.exports = algoController;
