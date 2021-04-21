@@ -18,9 +18,6 @@ export default function Navbar() {
           <Link to="/signup" className="navLinks">
             Sign up
           </Link>
-          <Link to="/login" className="navLinks">
-            Login
-          </Link>
         </div>
       </div>
     );
@@ -31,29 +28,29 @@ export default function Navbar() {
         <Link to="/" className="navLinks">
           <img className="navLogo" id="navLogo" src={Logo} alt="logo" />
         </Link>
-        <Link to="/login" className="navLinks">
+        <Link to="/" className="navLinks">
           Login
         </Link>
       </div>
     );
   }
-  if (location.pathname === '/login') {
+  // if (location.pathname === '/login') {
+  //   return (
+  //     <div className="navBar">
+  //       <Link to="/signup" className="navLinks">
+  //         Sign up
+  //       </Link>
+  //     </div>
+  //   );
+  // }
+  if (location.pathname === '/main') {
     return (
       <div className="navBar">
-        <Link to="/signup" className="navLinks">
-          Sign up
+        <Link to="/" className="navLinks">
+          <img className="navLogo" id="navLogo" src={Logo} alt="logo" />
         </Link>
       </div>
     );
-  }
-  if (location.pathname === '/main') {
-    <div className="navBar">
-      return{' '}
-      <Link to="/main" className="navLinks">
-        Main
-      </Link>
-      ;
-    </div>;
   }
   // return (
   //   <div>
