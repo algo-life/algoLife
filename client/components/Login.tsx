@@ -1,15 +1,14 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { updateUsername, updatePassword, login } from '../actions/actions';
-
 import { useHistory } from 'react-router-dom';
+import { updateUsername, updatePassword, login } from '../actions/actions';
 
 function Login(props: any) {
   const history = useHistory();
 
-  function loginError(){
+  function loginError() {
     if (props.user.loginError) {
-     return <h3>{props.user.loginError}</h3>
+      return <h3>{props.user.loginError}</h3>;
     }
   }
 
@@ -23,27 +22,33 @@ function Login(props: any) {
   };
 
   return (
-    <div>
-      <h1>Login</h1>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="username">Username</label>
+    <div id="loginContainer">
+      <div id="loginHeaders">
+        <h1 id="loginWelcome">Welcome!</h1>
+        <h2 id="loginInstructions">Login or create an account.</h2>
+      </div>
+      <form className="loginForm" onSubmit={handleSubmit}>
+        <label className="formLabel" htmlFor="username">
+          Username
+        </label>
         <input
+          className="formInput"
           id="username"
           type="text"
           value={props.username}
           onChange={(e) => props.updateUsername(e.target.value)}
         />
-        <label htmlFor="pass">Password</label>
+        <label className="formLabel" htmlFor="pass">
+          Password
+        </label>
         <input
+          className="formInput"
           id="pas"
           type="password"
           value={props.password}
           onChange={(e) => props.updatePassword(e.target.value)}
         />
-        <button
-          id="loginButton"
-          type="submit"
-        >
+        <button id="loginButton" type="submit">
           Login
         </button>
       </form>

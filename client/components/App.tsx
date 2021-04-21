@@ -21,8 +21,8 @@ export const App = (props: HelloWorldProps) => (
     <Router>
       <Navbar />
       <Switch>
-        <Route path="/" exact />
-        <Route path="/login" exact>
+        {/* <Route path="/" exact /> */}
+        <Route path="/" exact>
           <Login />
         </Route>
         <Route path="/signup" exact>

@@ -1,0 +1,38 @@
+.navBar {
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $purple;
+
+  .navLogo {
+    height: 50%;
+    margin-left: 40px;
+  }
+
+  .rightLinks {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .navLinks {
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 20px;
+    margin-right: 40px;
+    color: #f6db40;
+
+    &:visited {
+      color: #f6db40;
+    }
+
+    &:hover {
+      color: green;
+    }
+
+    &:active {
+      color: blue;
+    }
+  }
+}

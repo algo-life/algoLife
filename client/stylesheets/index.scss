@@ -1,0 +1,14 @@
+@import './_fonts.scss';
+@import './_colors.scss';
+@import './navbar.scss';
+@import './signup.scss';
+@import './login.scss';
+@import './dashboard.scss';
+@import './algos.scss';
+
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0px 0px;
+  background-color: #fffeff;
+}
