@@ -14,10 +14,10 @@ export default `<html>
     mocha.setup('bdd');
   </script>
   <script id="solution">
-    ***SOLUTIONHERE***
+    __SOLUTIONHERE__
   </script>
   <script id="test">
-    ***TESTHERE***
+    __TESTHERE__
   </script>
 
   <script>
