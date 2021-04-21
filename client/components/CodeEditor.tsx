@@ -4,10 +4,14 @@ import AceEditor from 'react-ace';
 import Themes from './Themes';
 import 'ace-builds/src-noconflict/mode-javascript';
 import 'ace-builds/src-noconflict/theme-monokai';
+import 'ace-builds/src-noconflict/theme-ambiance';
+import 'ace-builds/src-noconflict/theme-cobalt';
+import 'ace-builds/src-noconflict/theme-dawn';
+import 'ace-builds/src-noconflict/theme-twilight';
 import { updateCode, updateTheme } from '../actions/actions';
 
 const mapState = (state: any) => ({
-  value: state.code.value,
+  code: state.code.code,
   theme: state.code.theme,
 });
 
@@ -23,7 +27,7 @@ function CodeEditor(props: any) {
       <AceEditor
         placeholder="your solution here"
         mode="javascript"
-        theme="monokai"
+        theme={props.theme}
         editorProps={{
           $blockScrolling: true,
           enableBasicAutocompletion: true,
@@ -31,10 +35,10 @@ function CodeEditor(props: any) {
           enableSnippets: true,
         }}
         width="700px"
-        fontSize={15}
+        fontSize={14}
         tabSize={2}
         onChange={props.updateCode}
-        value={props.value}
+        value={props.code}
       />
     </>
   );

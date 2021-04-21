@@ -7,7 +7,7 @@ interface CodeState {
 
 const initialState: CodeState = {
   code: '',
-  theme: '',
+  theme: 'monokai',
 };
 
 export default function formReducer(
