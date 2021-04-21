@@ -10,14 +10,25 @@ export interface UPDATE_PASSWORD extends Action {
   payload: string;
 }
 
-interface UserObject {
-  username: string;
-  _id: number;
-}
-
 export interface UPDATE_USER_FAIL extends Action {
   type: 'UPDATE_USER_FAIL';
 }
+
+export interface algorithms {
+  name: String;
+  prompt: String;
+  level?: String;
+  solved?: Boolean;
+  saved?: Boolean;
+  solution?: String;
+}
+
+export interface UserObject {
+  username: string;
+  _id: number;
+  algos?: Array<algorithms>
+}
+
 export interface UPDATE_USER extends Action {
   type: 'UPDATE_USER';
   payload: UserObject;
