@@ -8,9 +8,9 @@
     "build": "NODE_ENV=production webpack",
     "dev": "NODE_ENV=development nodemon server/server.js & NODE_ENV=development webpack serve --open --hot",
     "test": "jest",
-    "test-algo": "bash ./scripts/run-test.sh"
+    "test-algo": "bash ./algorithms/scripts/run-test.sh"
   },
-  "author": "",
+  "author": "Weilan Cui, Rachel Farley, Ryan McDaniel, & Angelo Quail",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.1",
