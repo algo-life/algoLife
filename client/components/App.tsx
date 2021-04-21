@@ -19,7 +19,7 @@ export const App = (props: HelloWorldProps) => (
       <Route path="/">
         <Login />
       </Route>
-      <Route path="signup"></Route>
+      <Route path="/signup"></Route>
       <Route path="/main"></Route>
     </Switch>
   </Router>
