@@ -13,6 +13,7 @@ import { updateCode } from '../actions/actions';
 const mapState = (state: any) => ({
   code: state.code.code,
   theme: state.code.theme,
+  // solution: state.user.algorithms[2] ? state.user.algorithms[2].solution : '',
 });
 
 const mapDispatch = (dispatch: any) => ({
@@ -39,6 +40,7 @@ function CodeEditor(props: any) {
         tabSize={2}
         onChange={props.updateCode}
         value={props.code}
+        defaultValue={props.solution}
       />
     </>
   );

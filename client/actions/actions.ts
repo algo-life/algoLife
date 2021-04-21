@@ -4,6 +4,7 @@ import {
   UPDATE_USER,
   UPDATE_CODE,
   UPDATE_THEME,
+  UPDATE_TEST,
 } from '../constants';
 // change if the user has successfully logged in and redirect to home
 //screen
@@ -62,4 +63,9 @@ export const updateCode = (code: string): UPDATE_CODE => ({
 export const updateTheme = (theme: string): UPDATE_THEME => ({
   type: 'UPDATE_THEME',
   payload: theme,
+});
+
+export const updateTest = (test: string): UPDATE_TEST => ({
+  type: 'UPDATE_TEST',
+  payload: test,
 });

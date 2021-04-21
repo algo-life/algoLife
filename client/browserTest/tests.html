@@ -14,14 +14,16 @@
       mocha.setup('bdd');
     </script>
     <script id="solution">
-      function sum(a, b) {
+      function test(a, b) {
         return a + b;
       }
     </script>
     <script id="test">
-      describe('sum', function () {
-        it('should return sum of arguments', function () {
-          chai.expect(sum(1, 2)).to.equal(3);
+      describe('test', function () {
+        it('should pass custom user tests', function () {
+          chai.expect(test(1, 2)).to.equal(3);
+          chai.expect(test(3, 4)).to.equal(7);
+          chai.expect(test(5, 6)).to.equal(11);
         });
       });
     </script>
