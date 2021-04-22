@@ -9,7 +9,5 @@
     "sourceMap": true,
     "target": "es5"
   },
-  "include": [
-    "client/index.tsx"
-  ]
+  "include": ["client/index.tsx", "client/declaration.d.ts"]
 }

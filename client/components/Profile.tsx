@@ -42,6 +42,6 @@ const mapStateToProps = (state: any) => ({
 
 const mapDispatchToProps = (dispatch: any) => ({
 //update algos possibly
-});
+`});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);

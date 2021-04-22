@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Mocha Tests</title>
+    <link href="https://unpkg.com/mocha@4.0.1/mocha.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="mocha"></div>
+
+    <script src="https://unpkg.com/chai@4.1.2/chai.js"></script>
+    <script src="https://unpkg.com/mocha@4.0.1/mocha.js"></script>
+
+    <script>
+      mocha.setup('bdd');
+    </script>
+    <script id="solution">
+      function test(a, b) {
+        return a + b;
+      }
+    </script>
+    <script id="test">
+      describe('test', function () {
+        it('should pass custom user tests', function () {
+          chai.expect(test(1, 2)).to.equal(3);
+          chai.expect(test(3, 4)).to.equal(7);
+          chai.expect(test(5, 6)).to.equal(11);
+        });
+      });
+    </script>
+
+    <script>
+      // mocha.checkLeaks();
+      mocha.run();
+    </script>
+  </body>
+</html>
