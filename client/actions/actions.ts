@@ -14,6 +14,7 @@ import {
   UPDATE_CODE,
   UPDATE_THEME,
   UPDATE_TEST,
+  UPDATE_CODE_ALGO,
   algorithms
 } from '../constants';
 // add this in order to listen to state/store changes in the UI [state.isLoggedIn])
@@ -69,6 +70,7 @@ export const updateCode = (code: string): UPDATE_CODE => ({
   payload: code,
 });
 
+
 export const updateTheme = (theme: string): UPDATE_THEME => ({
   type: 'UPDATE_THEME',
   payload: theme,
@@ -78,3 +80,8 @@ export const updateTest = (test: string): UPDATE_TEST => ({
   type: 'UPDATE_TEST',
   payload: test,
 });
+
+export const updateCodeAlgo= (algo:algorithms): UPDATE_CODE_ALGO =>({
+  type: 'UPDATE_CODE_ALGO',
+  payload: algo
+})

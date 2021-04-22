@@ -33,7 +33,7 @@ export default function Navbar() {
       </div>
     );
   }
-  if (location.pathname === '/main') {
+  if (location.pathname === '/main' || location.pathname === '/profile') {
     return (
       <div className="navBar">
         <Link to="/" className="navLinks">
@@ -64,4 +64,5 @@ export default function Navbar() {
       </div>
     );
   }
+  // return null
 }
