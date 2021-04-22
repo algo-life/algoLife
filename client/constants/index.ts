@@ -19,20 +19,43 @@ export interface UPDATE_ALGOS{
   payload:UserObject["algorithms"]
 }
 
+
 export interface algorithms {
+  created_at: string;
+  difficulty: string;
   name: string;
   prompt: string;
-  difficulty?: string;
-  solved?: Boolean;
-  saved?: Boolean;
-  solution?: string;
+  saved: boolean;
+  solution: string;
+  solved: boolean;
+  test: string;
+  _id: number;
 }
 
 export interface UserObject {
   username: string;
   _id: number;
-  algorithms?: Array<algorithms>
-  loginError?: string
+  algorithms: algorithms[];
+  loginError?: string;
+}
+
+export interface UPDATE_CODE {
+  type: 'UPDATE_CODE';
+  payload: string;
+}
+
+export interface UPDATE_TEST {
+  type: 'UPDATE_TEST';
+  payload: string;
+}
+
+export interface UPDATE_THEME {
+  type: 'UPDATE_THEME';
+  payload: string;
+}
+
+export interface UPDATE_USER_FAIL extends Action {
+  type: 'UPDATE_USER_FAIL';
 }
 
 export interface UPDATE_USER extends Action {
@@ -40,6 +63,6 @@ export interface UPDATE_USER extends Action {
   payload: UserObject;
 }
 
-
 export type FormAction = UPDATE_USERNAME | UPDATE_PASSWORD;
 export type UserAction = UPDATE_USER | UPDATE_USER_FAIL | UPDATE_ALGOS
+export type CodeAction = UPDATE_CODE | UPDATE_THEME | UPDATE_TEST;

@@ -24,13 +24,18 @@ function Profile(props:any) {
      const listStuff= list.map((el: algorithms) => {
       
      
-     let x= `<input type="checkbox" id=${el.name} value=${el.name}>
-        <label>    ${el.name}</label>
-        <br></br>
-      </input>`;
-
+    //  let x= `<input type="checkbox" id=${el.name} value=${el.name}>
+    //     <label>    ${el.name}</label>
+    //     <br></br>
+    //   </input>`;
+    return(<div key={`${el.name}`}>
+      <input type="checkbox" id={`${el.name}`} />
+      <label>    ${el.name}</label>
+      {/* <br></br> */}
+      </div>
+      )
       // console.log(x)
-    });
+    })
    
 
     return listStuff
@@ -50,10 +55,10 @@ function Profile(props:any) {
 
 
 
-<input type="checkbox" id="hi" >
+<input type="checkbox" id="hi" />
         <label>    ${props.user.algoName}</label>
         <br></br>
-      </input>
+      
 {displayAlgos(true)}
       {/* <hr>
         <h3>completed dat Algo</h3>

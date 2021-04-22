@@ -19,7 +19,7 @@ module.exports = {
     hot: true,
     proxy: [
       {
-        context: ['/auth', '/algos'],
+        context: ['/signup', '/main', '/auth', '/algos'],
         target: 'http://localhost:3000',
       },
     ],
@@ -36,8 +36,16 @@ module.exports = {
         loader: 'source-map-loader',
       },
       {
+        test: /\.s[ac]ss$/i,
+        use: ['style-loader', 'css-loader', 'sass-loader'],
+      },
+      {
         test: /\.css$/,
         loader: 'css-loader',
+      },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: [{ loader: 'file-loader' }],
       },
     ],
   },

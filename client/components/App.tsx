@@ -1,19 +1,18 @@
 import * as React from 'react';
+import { connect } from 'react-redux';
 import Login from './Login';
 import MainContainer from './MainContainer';
 import SignUp from './SignUp';
 import Navbar from './Navbar';
-import Profile from './Profile';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import AlgoSubmit from './AlgoSubmit';
+import Profile from './Profile'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-export interface HelloWorldProps {
-  userName: string;
-  lang: string;
-}
+const mapState = (state: any) => ({
+  user: state.user,
+});
 
-
-//exact find the exact path else would get first matching pattern
-export const App = (props: HelloWorldProps) => (
+const App = (props: any) => (
   <div>
     <Router>
   
@@ -21,7 +20,9 @@ export const App = (props: HelloWorldProps) => (
       
       <Navbar />
       <Switch>
-        <Route path="/" exact />
+        <Route path="/" exact>
+          <Login />
+        </Route>
         <Route path="/login" exact>
           <Login />
         </Route>
@@ -29,7 +30,13 @@ export const App = (props: HelloWorldProps) => (
           <SignUp />
         </Route>
         <Route path="/main" exact>
-          <MainContainer />
+          <MainContainer
+            user={props.user}
+            algorithm={props.user.algorithms[2]}
+          />
+        </Route>
+        <Route path="/algoform" exact>
+          <AlgoSubmit />
         </Route>
         <Route path="/profile" exact>
           <Profile />
@@ -38,3 +45,5 @@ export const App = (props: HelloWorldProps) => (
     </Router>
   </div>
 );
+
+export default connect(mapState)(App);

@@ -1,4 +1,3 @@
-import { UPDATE_USERNAME, UPDATE_PASSWORD, UPDATE_USER, algorithms, UPDATE_ALGOS} from '../constants';
 // change if the user has successfully logged in and redirect to home
 //screen
 // import { useHistory } from 'react-router-dom';
@@ -9,12 +8,20 @@ import { UPDATE_USERNAME, UPDATE_PASSWORD, UPDATE_USER, algorithms, UPDATE_ALGOS
 //     history.push('/profile');
 //   }
 // }
-
+import {
+  UPDATE_USERNAME,
+  UPDATE_PASSWORD,
+  UPDATE_CODE,
+  UPDATE_THEME,
+  UPDATE_TEST,
+  algorithms
+} from '../constants';
 // add this in order to listen to state/store changes in the UI [state.isLoggedIn])
 export const updateAlgos= (updateAlgos: Array<algorithms>)=>({
   type:'UPDATE_ALGOS',
   payload: updateAlgos
 })
+
 
 export const updateUsername = (newName: string): UPDATE_USERNAME => ({
   type: 'UPDATE_USERNAME',
@@ -37,7 +44,6 @@ export const login = (username: string, password: string) => (
   })
     .then((res) => res.json())
     .then((userInfo: any) => {
-      console.log(userInfo);
       dispatch({ type: 'UPDATE_USER', payload: userInfo });
     })
     .catch((e) => console.log('error from login action...', e));
@@ -46,8 +52,6 @@ export const login = (username: string, password: string) => (
 export const signUp = (username: string, password: string) => (
   dispatch: any
 ) => {
-  //submit state to backend probably for Oauth
-  //redirect to profile if successfully signed in
   fetch('/auth/signup', {
     method: 'POST',
     headers: { 'content-type': 'application/json' },
@@ -55,8 +59,22 @@ export const signUp = (username: string, password: string) => (
   })
     .then((res) => res.json())
     .then((userInfo: any) => {
-      console.log('actions signup', userInfo);
       dispatch({ type: 'UPDATE_USER', payload: userInfo });
     })
     .catch((e) => console.log('error from signUp action...', e));
 };
+
+export const updateCode = (code: string): UPDATE_CODE => ({
+  type: 'UPDATE_CODE',
+  payload: code,
+});
+
+export const updateTheme = (theme: string): UPDATE_THEME => ({
+  type: 'UPDATE_THEME',
+  payload: theme,
+});
+
+export const updateTest = (test: string): UPDATE_TEST => ({
+  type: 'UPDATE_TEST',
+  payload: test,
+});
