@@ -29,7 +29,7 @@ const App = (props: any) => (
         <Route path="/main" exact>
           <MainContainer
             user={props.user}
-            algorithm={props.user.algorithms[2]}
+            algorithm={props.user.algorithms[9]}
           />
         </Route>
         <Route path="/algoform" exact>

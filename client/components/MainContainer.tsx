@@ -26,26 +26,26 @@ function MainContainer(props: any) {
   const [frameHtml, setFrameHtml] = React.useState('');
 
   const runTest = () => {
-    if (algo.test) {
-      const test = testHtml.replace('__TESTHERE__', algo.test);
+    if (props.algorithm.test) {
+      const test = testHtml.replace('__TESTHERE__', props.algorithm.test);
       setFrameHtml(test.replace('__SOLUTIONHERE__', props.code));
     }
   };
 
   React.useEffect(() => {
-    if (algo.solution) props.updateCode(algo.solution);
+    if (props.algorithm.solution) props.updateCode(props.algorithm.solution);
   }, []);
 
   return (
     <div id="algoContainer">
       <div id="codeEditorContainer">
-        <CodeEditor code={props.code} solution={algo.solution} />
+        <CodeEditor code={props.code} solution={props.algorithm.solution} />
       </div>
       <div id="testContainer">
         <iframe
           id="test-frame"
           style={{ height: '300px', width: '400px' }}
-          srcDoc={frameHtml || '<h1>Test results will appear here</h1>'}
+          srcDoc={frameHtml || '<h1>Test here</h1>'}
         />
         <button id="runTestButton" onClick={runTest}>
           Run test
