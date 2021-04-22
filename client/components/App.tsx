@@ -19,7 +19,6 @@ const App = (props: any) => (
         <Route path="/" exact>
           <Login />
         </Route>
-
         <Route path="/login" exact>
           <Login />
         </Route>

@@ -16,25 +16,34 @@ function SignUp(props: any) {
   };
 
   return (
-    <div>
-      <h1>SignUp</h1>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="username">Username</label>
+    <div id="signupContainer">
+      <div id="signupHeaders">
+        <h1 id="newUser">New user?</h1>
+        <h2 id="newUserSub">Create a new account.</h2>
+      </div>
+      <form className="signupForm" onSubmit={handleSubmit}>
+        <label className="formLabel" htmlFor="username">
+          Username
+        </label>
         <input
+          className="formInput"
           id="usernameSignUp"
           type="text"
           value={props.username}
           onChange={(e) => props.updateUsername(e.target.value)}
         />
-        <label htmlFor="passSignUp">Password</label>
+        <label className="formLabel" htmlFor="passSignUp">
+          Password
+        </label>
         <input
+          className="formInput"
           id="passSignUp"
           type="password"
           value={props.password}
           onChange={(e) => props.updatePassword(e.target.value)}
         />
 
-        <button id="signUp" type="submit">
+        <button id="signupButton" type="submit">
           Sign me UP
         </button>
       </form>
