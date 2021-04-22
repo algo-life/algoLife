@@ -22,13 +22,21 @@ app.get('/', (req, res) => {
 });
 
 // serve static files for all endpoints:
-// app.get('/signup', (req, res) => {
-//   res.status(200).sendFile(path.join(__dirname, '../client/index.html'));
-// });
+app.get('/signup', (req, res) => {
+  res.status(200).sendFile(path.join(__dirname, '../client/index.html'));
+});
 
-// app.get('/main', (req, res) => {
-//   res.status(200).sendFile(path.join(__dirname, '../client/index.html'));
-// });
+app.get('/login', (req, res) => {
+  res.status(200).sendFile(path.join(__dirname, '../client/index.html'));
+});
+
+app.get('/main', (req, res) => {
+  res.status(200).sendFile(path.join(__dirname, '../client/index.html'));
+});
+
+app.get('/algoform', (req, res) => {
+  res.status(200).sendFile(path.join(__dirname, '../client/index.html'));
+});
 
 app.all('*', (req, res) => {
   res.status(404).send('Endpoint not found');
