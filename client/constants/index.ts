@@ -10,7 +10,7 @@ export interface UPDATE_PASSWORD extends Action {
   payload: string;
 }
 
-export interface Algorithm {
+export interface algorithms {
   created_at: string;
   difficulty: string;
   name: string;
@@ -25,7 +25,7 @@ export interface Algorithm {
 export interface UserObject {
   username: string;
   _id: number;
-  algorithms: Algorithm[];
+  algorithms: algorithms[];
   loginError?: string;
 }
 

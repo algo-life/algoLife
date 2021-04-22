@@ -1,12 +1,5 @@
 import { UserAction, UserObject } from '../constants';
 
-// export interface UserState {
-//   username: string;
-//   _id: number;
-//   algorithms: Algorithm[];
-//   loginError?: string;
-// }
-
 export interface UserState extends UserObject {}
 
 export interface Algorithm {
