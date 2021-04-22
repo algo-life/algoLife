@@ -8,11 +8,21 @@ export default function AlgoSubmit() {
     setAlgoInfo({ ...algoInfo, [e.target.id]: e.target.value });
   };
   const handleSubmit = (e: any) => {
+    console.log('submit algoForm!');
     e.preventDefault();
     const algoObj = createAlgo(algoInfo);
     if (algoObj) {
       console.log(algoObj);
-      // send createAlgo(algoInfo) object to DB!!!
+      fetch('/algos/submitalgorithm', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify(algoObj),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+        })
+        .catch((err) => console.log('err from Profile ', err));
     }
   };
 
@@ -75,9 +85,10 @@ export default function AlgoSubmit() {
             placeholder="Algo output"
             onChange={handleChange}
           />
-          {/* <button id="newAlgoSubmitButton">Submit</button> */}
         </form>
-        <button id="newAlgoSubmitButton">Submit</button>
+        <button id="newAlgoSubmitButton" onClick={handleSubmit}>
+          Submit
+        </button>
       </div>
     </div>
   );

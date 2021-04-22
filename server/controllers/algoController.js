@@ -46,7 +46,23 @@ algoController.markSolved = (req, res, next) => {
     RETURNING user_id, algorithm_id, solved`;
 
   db.query(query).then((response) => {
-    console.log(response.rows)
+    console.log(response.rows);
+    res.locals.solved = response.rows[0];
+    return next();
+  });
+};
+
+algoController.markUnsolved = (req, res, next) => {
+  console.log('inside algoController.markUnsolved');
+  const { user_id, algorithm_id } = req.body;
+  const query = `
+    UPDATE users_algorithms
+    SET solved = false
+    WHERE user_id = ${user_id} AND algorithm_id = ${algorithm_id}
+    RETURNING user_id, algorithm_id, solved`;
+
+  db.query(query).then((response) => {
+    console.log(response.rows);
     res.locals.solved = response.rows[0];
     return next();
   });
