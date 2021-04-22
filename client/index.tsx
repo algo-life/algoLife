@@ -8,7 +8,7 @@ import './stylesheets/index.scss';
 
 ReactDOM.render(
   <Provider store={store}>
-    <App userName="Beveloper" lang="TypeScript" />
+    <App />
   </Provider>,
   document.getElementById('output')
 );
