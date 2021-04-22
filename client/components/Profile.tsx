@@ -4,6 +4,18 @@ import { login, updateAlgos } from '../actions/actions';
 import { UserObject, algorithms } from '../constants';
 
 function Profile(props: any) {
+
+  const handleClick = (e: any) => {
+    e.target.value
+   console.log
+fetch("/algos/solve",{
+  method:'POST',
+  headers:{'content-type':'application/json'  },
+  // body:{props.user._id}
+})
+
+    
+  };
   function displayAlgos(solve: boolean) {
     let list;
     if (!solve) {
@@ -15,7 +27,7 @@ function Profile(props: any) {
           <div key={`${el.name}`}>
             <input
               type="checkbox"
-              id={`${el.name}`}
+              id={`${el._id}`}
               // className="Unsolved"
               value={`${el.solved}`}
             />
@@ -33,10 +45,10 @@ function Profile(props: any) {
           <div key={`${el.name}1`}>
             <input
               type="checkbox"
-              id={`${el.name}`}
+              id={`${el._id}`}
               // className="solved"
               value={`${el.solved}`}
-              checked
+              
             />
             <label> ${el.name}</label>
           </div>
@@ -52,17 +64,18 @@ function Profile(props: any) {
       <h1 id="huh">Profile </h1>
       <h2>Hi there {props.user} get dat AlgoLife </h2>
       <div>
+        <form >
         <h3>completed dat Algo</h3>
-        <input type="checkbox" id="hi" />
         <label> ${props.user.algoName}</label>
         {displayAlgos(true)}
-        <button> Click to Update</button>
+        <button > Click to Update</button>
+        </form>
       </div>
       <br></br>
       <div>
-        <h3>gotta git dat Algo </h3>
+        <h3>Unsolved Algo </h3>
         {displayAlgos(false)}
-        <button> Click to Update</button>
+        <button > Click to Update</button>
       </div>
     </div>
   );

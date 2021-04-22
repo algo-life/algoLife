@@ -15,7 +15,7 @@ const mapState = (state: any) => ({
 const App = (props: any) => (
   <div>
     <Router>
-  
+ 
           {/* <Profile /> */}
       
       <Navbar />
