@@ -25,6 +25,7 @@ function CodeEditor(props: any) {
     <>
       <Themes />
       <AceEditor
+        className="codeEditor"
         placeholder="your solution here"
         mode="javascript"
         theme={props.theme}
