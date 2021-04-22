@@ -44,8 +44,12 @@ function Profile(props: any) {
 
     return list.map((el: algorithms, i: number) => {
       return (
-        <div className="singleAlgo" key={`${el.name}1`}>
-          <label onClick={() => handleClick(el)} id={`${el._id}`}>
+        <div id="algoList" key={`${el.name}1`}>
+          <label
+            className="singleAlgo"
+            onClick={() => handleClick(el)}
+            id={`${el._id}`}
+          >
             {' '}
             {el.name}
           </label>

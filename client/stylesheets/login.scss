@@ -66,11 +66,14 @@
     padding: 10px 0px;
     border: none;
     border-radius: 5px;
-    background-color: #dfdddd;
+    // background-color: #dfdddd;
+    color: white;
+    background-color: $purple;
+    box-shadow: 3px 3px 5px #aaa9a9;
+    cursor: pointer;
 
     &:hover {
-      filter: brightness(75%);
-      cursor: pointer;
+      filter: brightness(90%);
     }
     &:focus {
       outline: none;

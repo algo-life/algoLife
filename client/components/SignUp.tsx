@@ -44,7 +44,7 @@ function SignUp(props: any) {
         />
 
         <button id="signupButton" type="submit">
-          Sign me UP
+          Sign me up
         </button>
       </form>
     </div>
