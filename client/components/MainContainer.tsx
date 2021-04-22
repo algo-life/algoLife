@@ -5,41 +5,42 @@ import testHtml from '../browserTest/testhtml';
 import { updateTest, updateCode } from '../actions/actions';
 
 // mocking algo that will be passed down through props
-const algo = {
-  created_at: '2021-04-21T21:03:08.939Z',
-  difficulty: 'easy',
-  name: 'Find Sum',
-  prompt:
-    'Create a function "sum" that accepts two numbers and returns the sum',
-  saved: false,
-  solution: 'function sum(a, b) { return a + b; }',
-  solved: true,
-  test: `describe('sum', function () {
-    it('should return sum of arguments', function () {
-      chai.expect(sum(1, 2)).to.equal(3);
-    });
-  });`,
-  _id: 3,
-};
+// const algo = {
+//   created_at: '2021-04-21T21:03:08.939Z',
+//   difficulty: 'easy',
+//   name: 'Find Sum',
+//   prompt:
+//     'Create a function "sum" that accepts two numbers and returns the sum',
+//   saved: false,
+//   solution: 'function sum(a, b) { return a + b; }',
+//   solved: true,
+//   test: `describe('sum', function () {
+//     it('should return sum of arguments', function () {
+//       chai.expect(sum(1, 2)).to.equal(3);
+//     });
+//   });`,
+//   _id: 3,
+// };
 
 function MainContainer(props: any) {
   const [frameHtml, setFrameHtml] = React.useState('');
 
   const runTest = () => {
-    if (algo.test) {
-      const test = testHtml.replace('__TESTHERE__', algo.test);
+    if (props.algorithm.test) {
+      const test = testHtml.replace('__TESTHERE__', props.algorithm.test);
       setFrameHtml(test.replace('__SOLUTIONHERE__', props.code));
     }
   };
 
   React.useEffect(() => {
-    if (algo.solution) props.updateCode(algo.solution);
+    if (props.algorithm.solution) props.updateCode(props.algorithm.solution);
   }, []);
 
   return (
     <div id="algoContainer">
+      <h1>{props.algorithm.name}</h1>
       <div id="codeEditorContainer">
-        <CodeEditor code={props.code} solution={algo.solution} />
+        <CodeEditor code={props.code} solution={props.algorithm.solution} />
       </div>
       <div id="testContainer">
         <iframe
@@ -58,6 +59,7 @@ function MainContainer(props: any) {
 const mapState = (state: any) => ({
   code: state.code.code,
   curTest: state.code.curTest,
+  codeAlgo: state.code.curAlgo,
 });
 
 const mapDispatch = (dispatch: any) => ({
