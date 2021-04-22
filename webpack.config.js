@@ -19,7 +19,7 @@ module.exports = {
     hot: true,
     proxy: [
       {
-        context: ['/signup', '/main', '/auth', '/algos', '/algoform'],
+        context: ['/signup', '/login', '/main', '/auth', '/algos', '/algoform'],
         target: 'http://localhost:3000',
       },
     ],

@@ -26,6 +26,10 @@ app.get('/signup', (req, res) => {
   res.status(200).sendFile(path.join(__dirname, '../client/index.html'));
 });
 
+app.get('/login', (req, res) => {
+  res.status(200).sendFile(path.join(__dirname, '../client/index.html'));
+});
+
 app.get('/main', (req, res) => {
   res.status(200).sendFile(path.join(__dirname, '../client/index.html'));
 });
