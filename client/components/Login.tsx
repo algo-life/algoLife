@@ -14,7 +14,7 @@ function Login(props: any) {
 
   React.useEffect(() => {
     if (props.user.username) history.push('/profile');
-  }, [props.user]);
+  });
 
   const handleSubmit = (e: any) => {
     e.preventDefault();

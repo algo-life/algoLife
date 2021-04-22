@@ -1,18 +1,34 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { updateAlgos, updateCodeAlgo } from '../actions/actions';
-import { UserObject, algorithms } from '../constants';
+import { algorithms } from '../constants';
 import { useHistory } from 'react-router-dom';
 
 function Profile(props: any) {
   const history = useHistory();
+  if (!props.user.username) history.push('/login');
+
   const handleClick = (el: algorithms) => {
     props.updateCodeAlgo(el);
+
+    const body = {
+      user_id: props.user._id,
+      algorithm_id: el._id,
+    };
+
+    fetch('/algos/viewed', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(body),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data))
+      .catch((err) => console.log('err from Profile ', err));
     history.push('/main');
   };
 
   function displayAlgos(solve: boolean) {
-    console.log('props:', props);
+    if (!props.algos) return null;
     let list;
     if (!solve) {
       const unsolvedlist = props.algos.filter((el: any) => {
@@ -61,8 +77,6 @@ function Profile(props: any) {
 const mapStateToProps = (state: any) => ({
   user: state.user,
   algos: state.user.algorithms,
-  algoName: state.user.algorithms.name,
-  codeState: state.code.curAlgo,
 });
 
 const mapDispatchToProps = (dispatch: any) => ({

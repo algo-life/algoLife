@@ -18,6 +18,11 @@ router.post('/solve', algoController.markSolved, (req, res) => {
   res.status(200).json(res.locals.solved);
 });
 
+router.post('/unsolve', algoController.markUnsolved, (req, res) => {
+  console.log(res.locals.solved);
+  res.status(200).json(res.locals.solved);
+});
+
 router.post('/solution', algoController.saveSolution, (req, res) => {
   res.status(200).json(res.locals.solution);
 });

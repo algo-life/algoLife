@@ -1,13 +1,3 @@
-// change if the user has successfully logged in and redirect to home
-//screen
-// import { useHistory } from 'react-router-dom';
-// const history = useHistory()
-
-// export const isLoggedIn= (username:string|null)=>{
-//   if(username){
-//     history.push('/profile');
-//   }
-// }
 import {
   UPDATE_USERNAME,
   UPDATE_PASSWORD,
@@ -15,14 +5,14 @@ import {
   UPDATE_THEME,
   UPDATE_TEST,
   UPDATE_CODE_ALGO,
-  algorithms
+  algorithms,
 } from '../constants';
-// add this in order to listen to state/store changes in the UI [state.isLoggedIn])
-export const updateAlgos= (updateAlgos: Array<algorithms>)=>({
-  type:'UPDATE_ALGOS',
-  payload: updateAlgos
-})
 
+// add this in order to listen to state/store changes in the UI [state.isLoggedIn])
+export const updateAlgos = (updateAlgos: Array<algorithms>) => ({
+  type: 'UPDATE_ALGOS',
+  payload: updateAlgos,
+});
 
 export const updateUsername = (newName: string): UPDATE_USERNAME => ({
   type: 'UPDATE_USERNAME',
@@ -33,7 +23,6 @@ export const updatePassword = (newPass: string): UPDATE_PASSWORD => ({
   type: 'UPDATE_PASSWORD',
   payload: newPass,
 });
-
 
 export const login = (username: string, password: string) => (
   dispatch: any
@@ -70,7 +59,6 @@ export const updateCode = (code: string): UPDATE_CODE => ({
   payload: code,
 });
 
-
 export const updateTheme = (theme: string): UPDATE_THEME => ({
   type: 'UPDATE_THEME',
   payload: theme,
@@ -81,7 +69,7 @@ export const updateTest = (test: string): UPDATE_TEST => ({
   payload: test,
 });
 
-export const updateCodeAlgo= (algo:algorithms): UPDATE_CODE_ALGO =>({
+export const updateCodeAlgo = (algo: algorithms): UPDATE_CODE_ALGO => ({
   type: 'UPDATE_CODE_ALGO',
-  payload: algo
-})
+  payload: algo,
+});
