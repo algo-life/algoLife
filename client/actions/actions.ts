@@ -1,17 +1,10 @@
 import {
   UPDATE_USERNAME,
   UPDATE_PASSWORD,
-  UPDATE_USER,
   UPDATE_CODE,
   UPDATE_THEME,
   UPDATE_TEST,
 } from '../constants';
-// change if the user has successfully logged in and redirect to home
-//screen
-// if(state.isLoggedIn){
-//   history.push('/home');
-// }
-// add this in order to listen to state/store changes in the UI [state.isLoggedIn])
 
 export const updateUsername = (newName: string): UPDATE_USERNAME => ({
   type: 'UPDATE_USERNAME',
