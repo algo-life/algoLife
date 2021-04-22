@@ -1,39 +1,35 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { updateAlgos, updateCodeAlgo } from '../actions/actions';
-import { UserObject, algorithms } from '../constants';
+import { algorithms } from '../constants';
 import { useHistory } from 'react-router-dom';
 
 function Profile(props: any) {
-  // const copyState= props.user.algorithms
   const history = useHistory();
+  if (!props.user.username) history.push('/login');
 
   const handleClick = (el: algorithms) => {
-    console.log('hi', props.codeState);
     props.updateCodeAlgo(el);
+
+    const body = {
+      user_id: props.user._id,
+      algorithm_id: el._id,
+    };
+
+    fetch('/algos/viewed', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(body),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data))
+      .catch((err) => console.log('err from Profile ', err));
+
     history.push('/main');
-
-
-    // const newEl = { ...el, solved: !el.solved };
-    // const filteredAlgos = props.algos.filter(
-    //   (algo: algorithms) => algo._id !== el._id
-    // );
-    // props.updateAlgos([...filteredAlgos, newEl]);
-    // const bod = {
-    //   user_id: props.user._id,
-    //   algorithm_id: el._id,
-    // };
-    // fetch('/algos/solve', {
-    //   method: 'POST',
-    //   headers: { 'content-type': 'application/json' },
-    //   body: JSON.stringify(bod),
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => console.log(data))
-    //   .catch((err) => console.log('err from Profile ', err));
   };
 
   function displayAlgos(solve: boolean) {
+    if (!props.algos) return null;
     let list;
     if (!solve) {
       const unsolvedlist = props.algos.filter((el: any) => {
@@ -50,14 +46,9 @@ function Profile(props: any) {
     return list.map((el: algorithms, i: number) => {
       return (
         <div key={`${el.name}1`}>
-          {/* <input
-            // type="checkbox"
-            id={`${el._id}`}
-            // className="solved"
-            
-            value={`${el.solved}`}
-          /> */}
-          <label onClick={() => handleClick(el)}  id={`${el._id}`}> {el.name}</label>
+          <label onClick={() => handleClick(el)} id={`${el._id}`}>
+            {el.name}
+          </label>
         </div>
       );
     });
@@ -70,7 +61,7 @@ function Profile(props: any) {
       <div>
         <form>
           <h3>completed dat Algo</h3>
-          <label> {props.user.algoName}</label>
+          {/* <label> {props.algoName}</label> */}
           <h4> check to move to Unsolved</h4>
           {displayAlgos(true)}
         </form>
@@ -88,8 +79,6 @@ function Profile(props: any) {
 const mapStateToProps = (state: any) => ({
   user: state.user,
   algos: state.user.algorithms,
-  algoName: state.user.algorithms.name,
-  codeState: state.code.curAlgo,
 });
 
 const mapDispatchToProps = (dispatch: any) => ({

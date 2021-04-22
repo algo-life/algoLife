@@ -38,6 +38,10 @@ app.get('/algoform', (req, res) => {
   res.status(200).sendFile(path.join(__dirname, '../client/index.html'));
 });
 
+app.get('/profile', (req, res) => {
+  res.status(200).sendFile(path.join(__dirname, '../client/index.html'));
+});
+
 app.all('*', (req, res) => {
   res.status(404).send('Endpoint not found');
 });

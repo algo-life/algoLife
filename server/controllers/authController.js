@@ -93,7 +93,7 @@ authController.createUserObject = (req, res, next) => {
     for (let i = 0; i < res.locals.user.algorithms.length; i++) {
       if (userAlgos.includes(res.locals.user.algorithms[i]._id)) {
         const index = userAlgos.findIndex(
-          (x) => res.locals.user.algorithms[i]._id
+          (x) => x === res.locals.user.algorithms[i]._id
         );
         res.locals.user.algorithms[i].saved = response.rows[index].saved;
         res.locals.user.algorithms[i].solved = response.rows[index].solved;

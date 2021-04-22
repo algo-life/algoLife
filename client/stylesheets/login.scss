@@ -55,6 +55,9 @@
     margin-bottom: 10px;
     // border: none;
     // border-radius: 5px;
+    &:focus {
+      outline: none;
+    }
   }
 
   #loginButton {
@@ -67,6 +70,10 @@
 
     &:hover {
       filter: brightness(75%);
+      cursor: pointer;
+    }
+    &:focus {
+      outline: none;
     }
   }
 }
