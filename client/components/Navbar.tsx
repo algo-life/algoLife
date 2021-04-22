@@ -6,7 +6,6 @@ import Logo from '../assets/logo.png';
 
 export default function Navbar() {
   const location = useLocation();
-  console.log('location:', location);
 
   if (location.pathname === '/') {
     return (
