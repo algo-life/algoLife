@@ -23,6 +23,8 @@ import { updateTest, updateCode } from '../actions/actions';
 // };
 
 function MainContainer(props: any) {
+  console.log(props);
+  console.log('props.algorithm.prompt');
   const [frameHtml, setFrameHtml] = React.useState('');
 
   const runTest = () => {
@@ -38,7 +40,10 @@ function MainContainer(props: any) {
 
   return (
     <div id="algoContainer">
-      <h1>{props.algorithm.name}</h1>
+      <div id="algoHeader">
+        <h1>{props.algorithm.name}</h1>
+        <h4 id="algoPrompt"> {props.algorithm.prompt}</h4>
+      </div>
       <div id="codeEditorContainer">
         <CodeEditor code={props.code} solution={props.algorithm.solution} />
       </div>

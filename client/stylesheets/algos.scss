@@ -8,6 +8,26 @@
   justify-content: space-evenly;
   align-items: center;
 }
+#algoHeader {
+  display: flex;
+  flex-direction: row;
+  font-family: $sanchez;
+  background-color: grey;
+  width: 30%;
+  height: 30%;
+  margin: 0px 10px 0px 0px;
+  // background-color: $purple;
+  background-color: rgb(231, 230, 230);
+  // border-radius: 3px;
+  align-items: center;
+  // justify-content: center;
+  box-shadow: 3px 3px 5px #aaa9a9;
+}
+
+#algoPrompt {
+  font-size: 35px;
+  display: flex;
+}
 
 #codeEditorContainer {
   height: 100%;
