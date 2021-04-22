@@ -129,7 +129,7 @@ authController.verifyJWT = (req, res, next) => {
   if (!token) return res.redirect('/login');
 
   jwt.verify(token, secret, (err, decoded) => {
-    if (err) return res.status(400).json(err);
+    if (err) return res.redirect('/login');
     const { username } = decoded;
     return next();
   });
