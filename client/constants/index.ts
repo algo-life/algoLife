@@ -20,12 +20,12 @@ export interface UPDATE_ALGOS{
 }
 
 export interface algorithms {
-  name: String;
-  prompt: String;
-  difficulty?: String;
+  name: string;
+  prompt: string;
+  difficulty?: string;
   solved?: Boolean;
   saved?: Boolean;
-  solution?: String;
+  solution?: string;
 }
 
 export interface UserObject {

@@ -20,6 +20,9 @@ Hi {props.userName} from React! Welcome to {props.lang}!
 export const App = (props: HelloWorldProps) => (
   <div>
     <Router>
+  
+          <Profile />
+      
       <Navbar />
       <Switch>
         <Route path="/" exact />
