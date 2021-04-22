@@ -91,16 +91,22 @@ function MainContainer(props: any) {
           <iframe
             id="test-frame"
             style={{ height: '300px', width: '400px' }}
-            srcDoc={frameHtml || '<h1>Test here</h1>'}
+            srcDoc={frameHtml || '<h1></h1>'}
           />
-          <div className="MainContainer-buttons">
-            <button id="runTestButton" onClick={runTest}>
-             Run test
+          <div className="algoButtonsContainer">
+            <button
+              className="algoButtons"
+              id="runTestButton"
+              onClick={runTest}
+            >
+              Run test
             </button>
-            <button onClick={markSolved}>
+            <button className="algoButtons" onClick={markSolved}>
               Mark as {props.algorithm.solved ? 'unsolved' : 'solved'}
             </button>
-            <button onClick={saveSolution}>Save Solution!</button>
+            <button className="algoButtons" onClick={saveSolution}>
+              Save Solution!
+            </button>
           </div>
         </div>
       </div>
