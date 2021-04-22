@@ -2,12 +2,14 @@
   font-family: $sanchez;
   display: flex;
   flex-direction: column;
+  align-items: center;
   width: 100%;
   height: 80vh;
   // background-color: gray;
 
   .profileHeader {
     font-size: 50px;
+    margin: 50px auto;
   }
 }
 
@@ -17,8 +19,8 @@
 
 // full algo container, holding 2 big sub-containers
 .algoContainer {
-  width: 100%;
-  height: 90%;
+  width: 80%;
+  height: 80%;
   display: flex;
   justify-content: space-around;
 }
@@ -26,7 +28,11 @@
 // single algo name, whether solved or unsolved
 .singleAlgo {
   color: rgb(73, 73, 73);
-  margin: 10px 0px;
+  margin: 15px 0px;
+
+  .singleAlgo:hover {
+    cursor: pointer;
+  }
 }
 
 .unsolvedAlgoContainer {

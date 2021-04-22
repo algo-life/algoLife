@@ -41,21 +41,23 @@ function MainContainer(props: any) {
   return (
     <div id="algoContainer">
       <div id="algoHeader">
-        <h1>{props.algorithm.name}</h1>
+        <h1 id="algoName">{props.algorithm.name}</h1>
         <h4 id="algoPrompt"> {props.algorithm.prompt}</h4>
       </div>
-      <div id="codeEditorContainer">
-        <CodeEditor code={props.code} solution={props.algorithm.solution} />
-      </div>
-      <div id="testContainer">
-        <iframe
-          id="test-frame"
-          style={{ height: '300px', width: '400px' }}
-          srcDoc={frameHtml || '<h1>Test here</h1>'}
-        />
-        <button id="runTestButton" onClick={runTest}>
-          Run test
-        </button>
+      <div className="codeAndTest">
+        <div id="codeEditorContainer">
+          <CodeEditor code={props.code} solution={props.algorithm.solution} />
+        </div>
+        <div id="testContainer">
+          <iframe
+            id="test-frame"
+            style={{ height: '300px', width: '400px' }}
+            srcDoc={frameHtml || '<h1>Test here</h1>'}
+          />
+          <button id="runTestButton" onClick={runTest}>
+            Run test
+          </button>
+        </div>
       </div>
     </div>
   );
