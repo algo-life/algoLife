@@ -7,6 +7,8 @@ import { updateTest, updateCode, updateAlgos } from '../actions/actions';
 import { algorithms } from '../constants';
 
 function MainContainer(props: any) {
+  console.log(props);
+  console.log('props.algorithm.prompt');
   const [frameHtml, setFrameHtml] = React.useState('');
   const history = useHistory();
 
@@ -77,24 +79,29 @@ function MainContainer(props: any) {
 
   return (
     <div id="algoContainer">
-      <h1>{props.algorithm.name}</h1>
-      <div id="codeEditorContainer">
-        <CodeEditor code={props.code} solution={props.algorithm.solution} />
+      <div id="algoHeader">
+        <h1 id="algoName">{props.algorithm.name}</h1>
+        <h4 id="algoPrompt"> {props.algorithm.prompt}</h4>
       </div>
-      <div id="testContainer">
-        <iframe
-          id="test-frame"
-          style={{ height: '300px', width: '400px' }}
-          srcDoc={frameHtml || '<h1>Test results will appear here</h1>'}
-        />
-        <div className="MainContainer-buttons">
-          <button id="runTestButton" onClick={runTest}>
-            Run test
-          </button>
-          <button onClick={markSolved}>
-            Mark as {props.algorithm.solved ? 'unsolved' : 'solved'}
-          </button>
-          <button onClick={saveSolution}>Save Solution!</button>
+      <div className="codeAndTest">
+        <div id="codeEditorContainer">
+          <CodeEditor code={props.code} solution={props.algorithm.solution} />
+        </div>
+        <div id="testContainer">
+          <iframe
+            id="test-frame"
+            style={{ height: '300px', width: '400px' }}
+            srcDoc={frameHtml || '<h1>Test here</h1>'}
+          />
+          <div className="MainContainer-buttons">
+            <button id="runTestButton" onClick={runTest}>
+             Run test
+            </button>
+            <button onClick={markSolved}>
+              Mark as {props.algorithm.solved ? 'unsolved' : 'solved'}
+            </button>
+            <button onClick={saveSolution}>Save Solution!</button>
+          </div>
         </div>
       </div>
     </div>

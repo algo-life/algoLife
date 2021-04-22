@@ -24,7 +24,6 @@ function Profile(props: any) {
       .then((res) => res.json())
       .then((data) => console.log(data))
       .catch((err) => console.log('err from Profile ', err));
-
     history.push('/main');
   };
 
@@ -45,8 +44,9 @@ function Profile(props: any) {
 
     return list.map((el: algorithms, i: number) => {
       return (
-        <div key={`${el.name}1`}>
+        <div className="singleAlgo" key={`${el.name}1`}>
           <label onClick={() => handleClick(el)} id={`${el._id}`}>
+            {' '}
             {el.name}
           </label>
         </div>
@@ -55,22 +55,20 @@ function Profile(props: any) {
   }
 
   return (
-    <div>
-      <h1 id="huh">Profile </h1>
-      <h2>Hi there {props.user.username} get dat AlgoLife </h2>
-      <div>
-        <form>
-          <h3>completed dat Algo</h3>
-          {/* <label> {props.algoName}</label> */}
-          <h4> check to move to Unsolved</h4>
-          {displayAlgos(true)}
-        </form>
-      </div>
-      <br></br>
-      <div>
-        <h3>Unsolved Algo </h3>
-        <h4>check to solve</h4>
-        {displayAlgos(false)}
+    <div className="profileContainer">
+      <h1 className="profileHeader">Welcome, {props.user.username}!</h1>
+      <div className="algoContainer">
+        <div className="unsolvedAlgoContainer">
+          <h1 className="algoSolveHeader">Unsolved Algorithms</h1>
+          <div className="unsolvedAlgoList">{displayAlgos(false)}</div>
+        </div>
+        <div className="completedAlgoContainer">
+          <form className="completedAlgoForm">
+            <h1 className="algoSolveHeader">Completed Algorithms</h1>
+            <label className="completedAlgoItem"> {props.user.algoName}</label>
+            {displayAlgos(true)}
+          </form>
+        </div>
       </div>
     </div>
   );

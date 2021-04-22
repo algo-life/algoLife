@@ -1,0 +1,76 @@
+.profileContainer {
+  font-family: $sanchez;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 80vh;
+  // background-color: gray;
+
+  .profileHeader {
+    font-size: 50px;
+    margin: 50px auto;
+  }
+}
+
+.algoSolveHeader {
+  font-size: 40px;
+}
+
+// full algo container, holding 2 big sub-containers
+.algoContainer {
+  width: 80%;
+  height: 80%;
+  display: flex;
+  justify-content: space-around;
+}
+
+// single algo name, whether solved or unsolved
+.singleAlgo {
+  color: rgb(73, 73, 73);
+  margin: 15px 0px;
+
+  .singleAlgo:hover {
+    cursor: pointer;
+  }
+}
+
+.unsolvedAlgoContainer {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #cecccc;
+  border-radius: 5px;
+  box-shadow: 3px 3px 5px #aaa9a9;
+  overflow: scroll;
+
+  .unsolvedAlgoList {
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+// completed algo container (right side)
+.completedAlgoContainer {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #cecccc;
+  border-radius: 5px;
+  box-shadow: 3px 3px 5px #aaa9a9;
+  overflow: scroll;
+
+  // unsolved algo container form
+  .completedAlgoForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .completedAlgoItem {
+    font-size: 20px;
+    line-height: 30px;
+  }
+}
