@@ -1,5 +1,4 @@
 import { Action } from 'redux';
-import { Algorithm } from '../reducers/userReducer';
 
 export interface UPDATE_USERNAME extends Action {
   type: 'UPDATE_USERNAME';
@@ -11,10 +10,23 @@ export interface UPDATE_PASSWORD extends Action {
   payload: string;
 }
 
-interface UserObject {
+export interface Algorithm {
+  created_at: string;
+  difficulty: string;
+  name: string;
+  prompt: string;
+  saved: boolean;
+  solution: string;
+  solved: boolean;
+  test: string;
+  _id: number;
+}
+
+export interface UserObject {
   username: string;
   _id: number;
   algorithms: Algorithm[];
+  loginError?: string;
 }
 
 export interface UPDATE_CODE {
