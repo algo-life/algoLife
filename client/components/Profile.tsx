@@ -3,69 +3,68 @@ import { connect } from 'react-redux';
 import { login, updateAlgos } from '../actions/actions';
 import { UserObject, algorithms } from '../constants';
 
-function Profile(props:any) {
- 
-
+function Profile(props: any) {
   function displayAlgos(solve: boolean) {
     let list;
-    if (solve) {
+    if (!solve) {
       const unsolvedlist = props.algos.filter((el: any) => {
         if (!el.solved) return el;
-      })
-      list = unsolvedlist;
+      });
+      list = unsolvedlist.map((el: algorithms) => {
+        return (
+          <div key={`${el.name}`}>
+            <input
+              type="checkbox"
+              id={`${el.name}`}
+              // className="Unsolved"
+              value={`${el.solved}`}
+            />
+            <label> ${el.name}</label>
+          </div>
+        );
+      });
     } else {
-      const solvedlist = props.algos.filter((el: algorithms) => {
+      const solvedList = props.algos.filter((el: algorithms) => {
         if (el.solved) return el;
       });
-      // console.log('list', solvedlist);
-      list = solvedlist;
+
+      list = solvedList.map((el: algorithms) => {
+        return (
+          <div key={`${el.name}1`}>
+            <input
+              type="checkbox"
+              id={`${el.name}`}
+              // className="solved"
+              value={`${el.solved}`}
+              checked
+            />
+            <label> ${el.name}</label>
+          </div>
+        );
+      });
     }
 
-     const listStuff= list.map((el: algorithms) => {
-      
-     
-    //  let x= `<input type="checkbox" id=${el.name} value=${el.name}>
-    //     <label>    ${el.name}</label>
-    //     <br></br>
-    //   </input>`;
-    return(<div key={`${el.name}`}>
-      <input type="checkbox" id={`${el.name}`} />
-      <label>    ${el.name}</label>
-      {/* <br></br> */}
-      </div>
-      )
-      // console.log(x)
-    })
-   
-
-    return listStuff
+    return list;
   }
 
   return (
     <div>
-      <h1>Profile </h1>
-      <h2>Hi there {props.user} get dat AlgoLife </h2> 
-
-      {/* <input type="form">
-        gotta git dat Algo */}
-        {displayAlgos(false)} 
-        {/* <br></br>
-        <button>Update</button>
-       </input> */}
-
-
-
-<input type="checkbox" id="hi" />
-        <label>    ${props.user.algoName}</label>
-        <br></br>
-      
-{displayAlgos(true)}
-      {/* <hr>
+      <h1 id="huh">Profile </h1>
+      <h2>Hi there {props.user} get dat AlgoLife </h2>
+      <div>
         <h3>completed dat Algo</h3>
-        {/* 
-      </hr>
-      {/* possible put this in form ane then have submit to update database???? of completed... */}
-  </div>
+        <input type="checkbox" id="hi" />
+        <label> ${props.user.algoName}</label>
+        {displayAlgos(true)}
+        <button> Click to Update</button>
+      </div>
+      <br></br>
+      <div>
+        <h3>gotta git dat Algo </h3>
+        {displayAlgos(false)}
+        <button> Click to Update</button>
+      </div>
+    </div>
   );
 }
 

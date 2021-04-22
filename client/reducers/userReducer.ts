@@ -20,7 +20,7 @@ const initialState:UserState={
     _id: 1,
     algorithms:[
         {
-        created_at:"idk",
+        
         name: "algo1",
         prompt: "testpromp",
         difficulty:"peasy",
@@ -28,43 +28,49 @@ const initialState:UserState={
         saved: false,
         solution:"stuff",
         test:'yo',
-        _id:1
+        _id:1,
+        created_at:"idk",
     },
     
-    // {
-        
-    //     name: "algo2",
-    //     prompt: "testpromp2",
-    //     difficulty:"peasy2",
-    //     solved:false,
-    //     saved: false,
-    //     solution:"stuff2",
-    //     solution:"stuff",
-    //     test:'yo',
-    //     _id:2
-    // }
-    // ,
+    {
+        name: "algo2",
+        prompt: "testpromp2",
+        difficulty:"peasy2",
+        solved:false,
+        saved: false,
+        solution:"stuff2",
+        created_at:"stuff",
+        test:'yo',
+        _id:2
+    }
+    ,
     
-    // {
-    //     name: "algo3",
-    //     prompt: "testpromp2",
-    //     difficulty:"peasy2",
-    //     solved:false,
-    //     saved: false,
-    //     solution:"stuff2"
+    {
+        name: "algo3",
+        prompt: "testpromp2",
+        difficulty:"peasy2",
+        solved:false,
+        saved: false,
+        solution:"stuff2",
+    test:'yo',
+    _id:3,
+    created_at:"idk",
 
-    // }
-    // ,
+    }
+    ,
     
-    // {
-    //     name: "algo4",
-    //     prompt: "testpromp2",
-    //     difficulty:"peasy2",
-    //     solved:true,
-    //     saved: false,
-    //     solution:"stuff2"
+    {
+        name: "algo4",
+        prompt: "testpromp2",
+        difficulty:"peasy2",
+        solved:true,
+        saved: false,
+        solution:"stuff2",
+        test:'yo',
+        _id:4,
+        created_at:"idk",
 
-    // }
+    }
   ]
 }
 export interface UserState extends UserObject {}

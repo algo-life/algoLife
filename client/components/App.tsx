@@ -16,7 +16,7 @@ const App = (props: any) => (
   <div>
     <Router>
   
-          <Profile />
+          {/* <Profile /> */}
       
       <Navbar />
       <Switch>
