@@ -1,26 +1,30 @@
 import * as React from 'react';
+import { connect } from 'react-redux';
+import { updateTest, updateCode, updateAlgos } from '../actions/actions';
+import { algorithms } from '../constants';
 import createAlgo from '../helpers/createAlgo';
 
-export default function AlgoSubmit() {
+function AlgoSubmit(props: any) {
   const [algoInfo, setAlgoInfo] = React.useState({});
 
   const handleChange = (e: any) => {
     setAlgoInfo({ ...algoInfo, [e.target.id]: e.target.value });
   };
+
   const handleSubmit = (e: any) => {
-    console.log('submit algoForm!');
     e.preventDefault();
     const algoObj = createAlgo(algoInfo);
     if (algoObj) {
-      console.log(algoObj);
       fetch('/algos/submitalgorithm', {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify(algoObj),
       })
         .then((res) => res.json())
-        .then((data) => {
-          console.log(data);
+        .then((algo) => {
+          console.log(algo);
+          const newAlgos = [...props.algos, algo];
+          props.updateAlgos(newAlgos);
         })
         .catch((err) => console.log('err from Profile ', err));
     }
@@ -93,3 +97,13 @@ export default function AlgoSubmit() {
     </div>
   );
 }
+
+const mapDispatch = (dispatch: any) => ({
+  updateAlgos: (algoInfo: Array<algorithms>) => dispatch(updateAlgos(algoInfo)),
+});
+
+const mapState = (state: any) => ({
+  algos: state.user.algorithms,
+});
+
+export default connect(mapState, mapDispatch)(AlgoSubmit);

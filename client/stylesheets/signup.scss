@@ -48,9 +48,6 @@
     margin-bottom: 10px;
     // border: none;
     // border-radius: 5px;
-    &:focus {
-      outline: none;
-    }
   }
 
   #signupButton {
@@ -66,4 +63,8 @@
       cursor: pointer;
     }
   }
+}
+
+*:focus {
+  outline: none;
 }

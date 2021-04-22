@@ -43,10 +43,16 @@ function Profile(props: any) {
     }
 
     return list.map((el: algorithms, i: number) => {
+      const styles = { textDecoration: 'none' };
+      if (el.solved) styles.textDecoration = 'line-through';
       return (
         <div className="singleAlgo" key={`${el.name}1`}>
-          <label onClick={() => handleClick(el)} id={`${el._id}`}>
-            {' '}
+          <label
+            onClick={() => handleClick(el)}
+            id={`${el._id}`}
+            style={styles}
+            className="algoLabel"
+          >
             {el.name}
           </label>
         </div>

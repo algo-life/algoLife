@@ -23,16 +23,18 @@
   height: 80%;
   display: flex;
   justify-content: space-around;
+  text-align: center;
+  font-size: 20px;
 }
 
 // single algo name, whether solved or unsolved
 .singleAlgo {
   color: rgb(73, 73, 73);
   margin: 15px 0px;
+}
 
-  .singleAlgo:hover {
-    cursor: pointer;
-  }
+.algoLabel:hover {
+  cursor: pointer;
 }
 
 .unsolvedAlgoContainer {
@@ -46,7 +48,6 @@
   overflow: scroll;
 
   .unsolvedAlgoList {
-    font-size: 20px;
     display: flex;
     flex-direction: column;
   }

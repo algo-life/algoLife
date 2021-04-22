@@ -62,7 +62,6 @@ algoController.markUnsolved = (req, res, next) => {
     RETURNING user_id, algorithm_id, solved`;
 
   db.query(query).then((response) => {
-    console.log(response.rows);
     res.locals.solved = response.rows[0];
     return next();
   });

@@ -7,9 +7,8 @@ import { updateTest, updateCode, updateAlgos } from '../actions/actions';
 import { algorithms } from '../constants';
 
 function MainContainer(props: any) {
-  console.log(props);
-  console.log('props.algorithm.prompt');
   const [frameHtml, setFrameHtml] = React.useState('');
+  const [alg, setAlg] = React.useState({ ...props.algorithm });
   const history = useHistory();
 
   const runTest = () => {
@@ -95,7 +94,7 @@ function MainContainer(props: any) {
           />
           <div className="MainContainer-buttons">
             <button id="runTestButton" onClick={runTest}>
-             Run test
+              Run test
             </button>
             <button onClick={markSolved}>
               Mark as {props.algorithm.solved ? 'unsolved' : 'solved'}
