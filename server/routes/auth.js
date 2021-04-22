@@ -19,14 +19,17 @@ router.post(
   authController.login,
   authController.createUserObject,
   authController.createJWT,
-  // authController.verifyJWT,
   (req, res) => {
     res.status(200).json(res.locals.user);
   }
 );
 
 router.get('/logout', authController.logout, (req, res) => {
-  res.status(200).json('Successfully logged out.');
+  res.redirect('/auth/verify');
+});
+
+router.get('/verify', authController.verifyJWT, (req, res) => {
+  res.status(200).json(res.locals.user);
 });
 
 module.exports = router;

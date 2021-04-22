@@ -126,7 +126,6 @@ authController.createJWT = (req, res, next) => {
 authController.verifyJWT = (req, res, next) => {
   console.log('inside authController.verifyJWT');
   const token = req.cookies.jwt;
-  console.log('verifyJWT token: ', token);
   if (!token) return res.redirect('/login');
 
   jwt.verify(token, secret, (err, decoded) => {
@@ -138,7 +137,7 @@ authController.verifyJWT = (req, res, next) => {
 
 authController.logout = (req, res, next) => {
   console.log('inside authController.logout');
-  res.cookie('jwt', null);
+  res.clearCookie('jwt');
   return next();
 };
 
