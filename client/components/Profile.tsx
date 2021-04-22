@@ -17,7 +17,7 @@ function Profile(props:any) {
       const solvedlist = props.algos.filter((el: algorithms) => {
         if (el.solved) return el;
       });
-      console.log('list', solvedlist);
+      // console.log('list', solvedlist);
       list = solvedlist;
     }
 
@@ -29,7 +29,7 @@ function Profile(props:any) {
         <br></br>
       </input>`;
 
-      console.log(x)
+      // console.log(x)
     });
    
 
@@ -48,6 +48,12 @@ function Profile(props:any) {
         <button>Update</button>
        </input> */}
 
+
+
+<input type="checkbox" id="hi" >
+        <label>    ${props.user.algoName}</label>
+        <br></br>
+      </input>
 {displayAlgos(true)}
       {/* <hr>
         <h3>completed dat Algo</h3>

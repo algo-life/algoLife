@@ -11,11 +11,7 @@ export interface HelloWorldProps {
   lang: string;
 }
 
-{
-  /* <h1>
-Hi {props.userName} from React! Welcome to {props.lang}!
-</h1> */
-}
+
 //exact find the exact path else would get first matching pattern
 export const App = (props: HelloWorldProps) => (
   <div>
