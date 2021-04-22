@@ -1,7 +1,5 @@
 import * as React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-
-// const Logo = require('../assets/logo.png');
 import Logo from '../assets/logo.png';
 
 export default function Navbar() {
@@ -13,11 +11,9 @@ export default function Navbar() {
         <Link to="/profile" className="navLinks">
           <img className="navLogo" id="navLogo" src={Logo} alt="logo" />
         </Link>
-        <div className="rightLinks">
-          <Link to="/signup" className="navLinks">
-            Sign up
-          </Link>
-        </div>
+        <Link to="/signup" className="navLinks">
+          Sign up
+        </Link>
       </div>
     );
   }
@@ -33,18 +29,46 @@ export default function Navbar() {
         </Link>
       </div>
     );
-  } else
+  }
+  if (location.pathname === '/profile') {
     return (
       <div className="navBar">
         <Link to="/profile" className="navLinks">
           <img className="navLogo" id="navLogo" src={Logo} alt="logo" />
-        </Link>
-        <Link to="/profile" className="navLinks">
-          Profile
         </Link>
         <Link to="/algoform" className="navLinks">
           Submit an Algorithm
         </Link>
       </div>
     );
+  }
+  if (location.pathname === '/main') {
+    return (
+      <div className="navBar">
+        <Link to="/profile" className="navLinks">
+          <img className="navLogo" id="navLogo" src={Logo} alt="logo" />
+        </Link>
+        <div className="rightLinks">
+          <Link to="/profile" className="navLinks">
+            Profile
+          </Link>
+          <Link to="/algoform" className="navLinks">
+            Submit an Algorithm
+          </Link>
+        </div>
+      </div>
+    );
+  }
+  if (location.pathname === '/algoform') {
+    return (
+      <div className="navBar">
+        <Link to="/" className="navLinks">
+          <img className="navLogo" id="navLogo" src={Logo} alt="logo" />
+        </Link>
+        <Link to="/profile" className="navLinks">
+          Profile
+        </Link>
+      </div>
+    );
+  }
 }

@@ -46,12 +46,12 @@ function Profile(props: any) {
       const styles = { textDecoration: 'none' };
       if (el.solved) styles.textDecoration = 'line-through';
       return (
-        <div className="singleAlgo" key={`${el.name}1`}>
+        <div id="algoList" key={`${el.name}1`}>
           <label
+            className="singleAlgo"
             onClick={() => handleClick(el)}
-            id={`${el._id}`}
             style={styles}
-            className="algoLabel"
+            id={`${el._id}`}
           >
             {el.name}
           </label>

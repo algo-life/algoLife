@@ -13,6 +13,8 @@
   }
 
   .rightLinks {
+    // background-color: orange;
+    width: 35%;
     display: flex;
     justify-content: space-between;
   }
@@ -20,9 +22,9 @@
   .navLinks {
     text-decoration: none;
     cursor: pointer;
-    font-size: 35px;
+    font-size: 30px;
     // font-weight: bold;
-    margin-right: 40px;
+    margin-right: 50px;
     // color: rgb(255, 255, 35);
     color: white;
 

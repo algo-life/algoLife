@@ -9,6 +9,7 @@
 
   .profileHeader {
     font-size: 50px;
+    letter-spacing: 0.2rem;
     margin: 50px auto;
   }
 }
@@ -28,16 +29,37 @@
 }
 
 // single algo name, whether solved or unsolved
-.singleAlgo {
-  color: rgb(73, 73, 73);
-  margin: 15px 0px;
+#algoList {
+  height: 100%;
+  // margin-bottom: 20px;
+  // background-color: green;
+  // display: flex;
+  // align-items: stretch;
+  // background-color: red;
+  // color: rgb(73, 73, 73);
+  // margin: 15px 0px;
+  // font-size: 20px;
+
+  // .singleAlgo:hover {
+  //   cursor: pointer;
+  // }
 }
 
-.algoLabel:hover {
+.singleAlgo {
+  height: 100%;
+  color: rgb(73, 73, 73);
+  line-height: 50px;
+  font-size: 25px;
   cursor: pointer;
+
+  &:hover {
+    color: $purple;
+  }
 }
 
 .unsolvedAlgoContainer {
+  // background-color: green;
+  height: 100%;
   width: 40%;
   display: flex;
   flex-direction: column;
