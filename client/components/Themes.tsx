@@ -17,7 +17,12 @@ function Themes(props: any) {
       </p>
     ));
 
-  return <div id="themes">{renderThemes()}</div>;
+  return (
+    <div id="themes">
+      <h3 id="themeHeader">THEMES</h3>
+      <div className="themesList">{renderThemes()}</div>
+    </div>
+  );
 }
 
 export default connect(null, mapDispatch)(Themes);
