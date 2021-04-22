@@ -25,7 +25,7 @@ router.post(
 );
 
 router.get('/logout', authController.logout, (req, res) => {
-  res.redirect('/auth/verify');
+  res.redirect('/login');
 });
 
 router.get('/verify', authController.verifyJWT, (req, res) => {
