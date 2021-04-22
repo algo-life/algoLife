@@ -14,6 +14,7 @@ router.post(
 );
 
 router.post('/solve', algoController.markSolved, (req, res) => {
+  console.log(res.locals.solved);
   res.status(200).json(res.locals.solved);
 });
 

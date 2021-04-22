@@ -1,9 +1,10 @@
-import { CodeAction } from '../constants';
+import { CodeAction, algorithms } from '../constants';
 
 interface CodeState {
   code: string;
   theme: string;
   curTest: string;
+  curAlgo?: algorithms;
 }
 
 const initialState: CodeState = {
@@ -12,7 +13,7 @@ const initialState: CodeState = {
   curTest: '',
 };
 
-export default function formReducer(
+export default function codeReducer(
   state = initialState,
   action: CodeAction
 ): CodeState {
@@ -25,6 +26,9 @@ export default function formReducer(
     }
     case 'UPDATE_TEST': {
       return { ...state, curTest: action.payload };
+    }
+    case 'UPDATE_CODE_ALGO':{
+      return {...state, curAlgo:action.payload}
     }
     default: {
       return state;

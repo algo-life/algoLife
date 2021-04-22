@@ -10,7 +10,17 @@ export interface UPDATE_PASSWORD extends Action {
   payload: string;
 }
 
-export interface Algorithm {
+export interface UPDATE_USER_FAIL extends Action {
+  type: 'UPDATE_USER_FAIL';
+}
+
+export interface UPDATE_ALGOS{
+  type: 'UPDATE_ALGOS'
+  payload:UserObject["algorithms"]
+}
+
+
+export interface algorithms {
   created_at: string;
   difficulty: string;
   name: string;
@@ -25,7 +35,7 @@ export interface Algorithm {
 export interface UserObject {
   username: string;
   _id: number;
-  algorithms: Algorithm[];
+  algorithms: algorithms[];
   loginError?: string;
 }
 
@@ -53,6 +63,10 @@ export interface UPDATE_USER extends Action {
   payload: UserObject;
 }
 
+export interface UPDATE_CODE_ALGO extends Action{
+  type: 'UPDATE_CODE_ALGO'
+  payload:algorithms
+}
 export type FormAction = UPDATE_USERNAME | UPDATE_PASSWORD;
-export type UserAction = UPDATE_USER | UPDATE_USER_FAIL;
-export type CodeAction = UPDATE_CODE | UPDATE_THEME | UPDATE_TEST;
+export type UserAction = UPDATE_USER | UPDATE_USER_FAIL | UPDATE_ALGOS;
+export type CodeAction = UPDATE_CODE | UPDATE_THEME | UPDATE_TEST | UPDATE_CODE_ALGO;

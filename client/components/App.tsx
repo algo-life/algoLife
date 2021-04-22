@@ -5,15 +5,19 @@ import MainContainer from './MainContainer';
 import SignUp from './SignUp';
 import Navbar from './Navbar';
 import AlgoSubmit from './AlgoSubmit';
+import Profile from './Profile';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 const mapState = (state: any) => ({
   user: state.user,
+  curAlgo: state.code.curAlgo,
 });
 
 const App = (props: any) => (
   <div>
     <Router>
+      {/* <Profile /> */}
+
       <Navbar />
       <Switch>
         <Route path="/" exact>
@@ -26,14 +30,16 @@ const App = (props: any) => (
         <Route path="/signup" exact>
           <SignUp />
         </Route>
-        <Route path="/main" exact>
-          <MainContainer
-            user={props.user}
-            algorithm={props.user.algorithms[9]}
-          />
-        </Route>
+        {props.curAlgo ? (
+          <Route path="/main" exact>
+            <MainContainer user={props.user} algorithm={props.curAlgo} />
+          </Route>
+        ) : null}
         <Route path="/algoform" exact>
           <AlgoSubmit />
+        </Route>
+        <Route path="/profile" exact>
+          <Profile />
         </Route>
       </Switch>
     </Router>
