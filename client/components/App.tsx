@@ -17,8 +17,8 @@ const App = (props: any) => (
       <Navbar />
       <Switch>
         <Route path="/" exact>
-          {/* <Login /> */}
-          <MainContainer />
+          <Login />
+          {/* <MainContainer /> */}
         </Route>
         <Route path="/login" exact>
           <Login />
