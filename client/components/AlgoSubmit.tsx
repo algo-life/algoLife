@@ -6,6 +6,7 @@ import createAlgo from '../helpers/createAlgo';
 
 function AlgoSubmit(props: any) {
   const [algoInfo, setAlgoInfo] = React.useState({});
+  const [submitted, setSubmitted] = React.useState(false);
 
   const handleChange = (e: any) => {
     setAlgoInfo({ ...algoInfo, [e.target.id]: e.target.value });
@@ -23,8 +24,11 @@ function AlgoSubmit(props: any) {
         .then((res) => res.json())
         .then((algo) => {
           console.log(algo);
-          const newAlgos = [...props.algos, algo];
-          props.updateAlgos(newAlgos);
+          if (algo) {
+            setSubmitted(true);
+            const newAlgos = [...props.algos, algo];
+            props.updateAlgos(newAlgos);
+          }
         })
         .catch((err) => console.log('err from Profile ', err));
     }
@@ -91,7 +95,7 @@ function AlgoSubmit(props: any) {
           />
         </form>
         <button id="newAlgoSubmitButton" onClick={handleSubmit}>
-          Submit
+          {submitted ? 'Submitted!!' : 'Submit'}
         </button>
       </div>
     </div>
