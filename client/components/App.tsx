@@ -22,6 +22,7 @@ const App = (props: any) => (
       <Switch>
         <Route path="/" exact>
           <Login />
+          {/* <MainContainer /> */}
         </Route>
         <Route path="/login" exact>
           <Login />

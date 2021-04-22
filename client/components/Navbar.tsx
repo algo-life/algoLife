@@ -6,7 +6,6 @@ import Logo from '../assets/logo.png';
 
 export default function Navbar() {
   const location = useLocation();
-  console.log('location:', location);
 
   if (location.pathname === '/') {
     return (
@@ -34,16 +33,19 @@ export default function Navbar() {
       </div>
     );
   }
-  // if (location.pathname === '/login') {
-  //   return (
-  //     <div className="navBar">
-  //       <Link to="/signup" className="navLinks">
-  //         Sign up
-  //       </Link>
-  //     </div>
-  //   );
-  // }
   if (location.pathname === '/main') {
+    return (
+      <div className="navBar">
+        <Link to="/" className="navLinks">
+          <img className="navLogo" id="navLogo" src={Logo} alt="logo" />
+        </Link>
+        <Link to="/algoform" className="navLinks">
+          Submit an Algorithm
+        </Link>
+      </div>
+    );
+  }
+  if (location.pathname === '/algoform') {
     return (
       <div className="navBar">
         <Link to="/" className="navLinks">
@@ -52,12 +54,14 @@ export default function Navbar() {
       </div>
     );
   }
-  // return (
-  //   <div>
-  //     <Link to="/signup">Sign up</Link>
-  //     <Link to="/login">Login</Link>
-  //     <Link to="/main">Main</Link>
-  //   </div>
-  // );
-  return null
+  // THIS PATH FOR LOGIN IS CURRENTLY REDUNDANT W/ THE ROOT:
+  if (location.pathname === '/login') {
+    return (
+      <div className="navBar">
+        <Link to="/signup" className="navLinks">
+          Sign up
+        </Link>
+      </div>
+    );
+  }
 }
