@@ -1,13 +1,3 @@
-// {
-//     name
-//     prompt
-//     difficulty
-//     test
-// }
-
-// (1, 2)|(3, 4)|(5,6)
-// 3,7,11
-
 export const createTestBody = (input: string, output: string, name: string) => {
   const inputArray = input.split('|');
   const outputArray = output.split(',');

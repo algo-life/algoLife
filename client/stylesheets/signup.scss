@@ -48,9 +48,6 @@
     margin-bottom: 10px;
     // border: none;
     // border-radius: 5px;
-    &:focus {
-      outline: none;
-    }
   }
 
   #signupButton {
@@ -68,4 +65,8 @@
       filter: brightness(90%);
     }
   }
+}
+
+*:focus {
+  outline: none;
 }

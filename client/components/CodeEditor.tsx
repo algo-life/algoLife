@@ -39,7 +39,10 @@ function CodeEditor(props: any) {
         width="700px"
         fontSize={14}
         tabSize={2}
-        onChange={props.updateCode}
+        onChange={(val) => {
+          props.updateCode(val);
+          props.setSaved(false);
+        }}
         value={props.code}
         defaultValue={props.solution}
       />

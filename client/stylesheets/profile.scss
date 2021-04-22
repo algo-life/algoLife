@@ -24,6 +24,8 @@
   height: 80%;
   display: flex;
   justify-content: space-around;
+  text-align: center;
+  font-size: 20px;
 }
 
 // single algo name, whether solved or unsolved
@@ -68,7 +70,6 @@
   overflow: scroll;
 
   .unsolvedAlgoList {
-    // font-size: 20px;
     display: flex;
     flex-direction: column;
   }
