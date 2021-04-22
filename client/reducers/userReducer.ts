@@ -1,11 +1,13 @@
-import { UserAction } from '../constants';
+import { UserAction, UserObject } from '../constants';
 
-export interface UserState {
-  username: string;
-  _id: number;
-  algorithms: Algorithm[];
-  loginError?: string;
-}
+// export interface UserState {
+//   username: string;
+//   _id: number;
+//   algorithms: Algorithm[];
+//   loginError?: string;
+// }
+
+export interface UserState extends UserObject {}
 
 export interface Algorithm {
   created_at: string;
@@ -23,7 +25,6 @@ const initialState: UserState = {
   username: null,
   _id: null,
   algorithms: [],
-  //   loginError:? ''
 };
 
 export default function UserReducer(
